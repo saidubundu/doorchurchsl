@@ -22,4 +22,14 @@ Route::resource('/pastor', 'PastorController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('backend/home', 'Backend\HomeController@index')->name('home');
+Route::resource('backend/sermons', 'Backend\SermonsController');
+Route::put('backend/sermons/restore/{sermon}',[
+    'uses' => 'Backend\SermonsController@restore',
+    'as' => 'sermons.restore'
+]);
+Route::delete('/backend/sermons/force-destroy/{sermons}',[
+    'uses' => 'Backend\SermonsController@forceDestroy',
+    'as' => 'sermons.force-destroy'
+]);
+

@@ -49,7 +49,7 @@ class SermonController extends Controller
     public function show($id)
     {
         //
-        $sermon = Sermon::findOrFail($id);
+        $sermon = Sermon::published()->findOrFail($id);
         return view('frontend.sermon.show', compact('sermon'));
     }
 

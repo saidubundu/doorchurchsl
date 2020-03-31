@@ -13,7 +13,7 @@ class CreateSermonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sermon', function (Blueprint $table) {
+        Schema::create('sermons', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->string('title');
@@ -21,7 +21,7 @@ class CreateSermonsTable extends Migration
             $table->text('body');
             $table->string('image')->nullable();
             $table->string('audio')->nullable();
-            $table->integer('view_count');
+            $table->integer('view_count')->default('1');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

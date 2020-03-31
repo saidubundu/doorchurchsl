@@ -15,7 +15,7 @@ class SermonsTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('sermon')->truncate();
+        DB::table('sermons')->truncate();
 
         $sermons= [];
         $faker = Factory::create();
@@ -41,6 +41,6 @@ class SermonsTableSeeder extends Seeder
             ];
         }
 
-        DB::table('sermon')->insert($sermons);
+        DB::table('sermons')->insert($sermons);
     }
 }

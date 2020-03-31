@@ -36,18 +36,17 @@
                     <div class="portfolio-block portfolio-popup">
                         @foreach($videos as $video)
                         <div class="col-md-6 col-sm-12 portfolio-item videos">
-
-                            <video
-                                    id="my-video"
+                            <div class="video-item">
+                            <video id="my-video"
                                     class="video-js"
                                     controls
                                     preload="auto"
-                                    width="640"
-                                    height="264"
+                                    width=""
+                                    height=""
                                     poster="MY_VIDEO_POSTER.jpg"
                                     data-setup="{}"
                                 >
-                                    <source src="{{$video->video_url}}" type="video/mp4" />
+                                    <source class="img-responsive" src="{{$video->video_url}}" type="video/mp4" />
                                     <p class="vjs-no-js">
                                         To view this video please enable JavaScript, and consider upgrading to a
                                         web browser that
@@ -56,8 +55,16 @@
                                         >
                                     </p>
                                 </video>
-
+                                <div class="video-device">
+                                    <img class="video-bg-img img-responsive" src="images/gallery/gallery-01.jpg" alt="portfolio-img-1">
+                                    <div class="overlay-bg"></div>
+                                    <div class="video-preview">
+                                        <a href="javascript:void(0);" class="btn-video-play"><img src="images/icons/play-icon.png" alt="btn-play"></a>
+                                    </div>
+                                </div>
+                            </div>
                                 <script src="https://vjs.zencdn.net/7.7.5/video.js"></script>
+
 
                         </div>
                         @endforeach
@@ -67,7 +74,7 @@
 
                             <div class="portfolio-img">
                                 <img src="{{$photo->photo_url}}" class="img-responsive" alt="portfolio-img-2">
-                                <div class="portfolio-overlay"><a href="images/gallery/gallery-02.jpg"><i class="fa fa-search"></i></a></div>
+                                <div class="portfolio-overlay"><a href="{{$photo->photo_url}}"><i class="fa fa-search"></i></a></div>
                             </div>
 
                         </div>

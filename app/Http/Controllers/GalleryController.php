@@ -17,7 +17,7 @@ class GalleryController extends Controller
     {
         //
         $photos = Photo::all();
-        $videos = Video::all();
+        $videos = Video::paginate(2);
         return view('frontend.gallery.index', compact('photos', 'videos'));
     }
 
