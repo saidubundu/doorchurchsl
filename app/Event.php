@@ -7,6 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     //
+    protected $fillable = [
+        'title',
+        'body',
+        'eventImage',
+        'date',
+        'location'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Event');
+    }
+
     public function getEventImageUrlAttribute()
     {
         $eventImage = "";

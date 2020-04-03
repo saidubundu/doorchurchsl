@@ -5,12 +5,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Sermons
-                <small>All sermon</small>
+                Event
+                <small>All events</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Sermons</li>
+                <li class="active">Event</li>
             </ol>
         </section>
 
@@ -20,17 +20,17 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Sermons</h3>
+                            <h3 class="box-title">Event</h3>
 
                             <div class="box-tools">
-                                <?php $links = [] ?>
-                                @foreach($statusList as $key => $value)
-                                    @if($value)
-                                        <?php $selected = Request::get('status') == $key ? 'selected-status' : '' ?>
-                                        <?php $links[] = "<a class=\"{$selected}\" href=\"?status={$key}\">" . ucwords($key) . "({$value})</a>" ?>
-                                    @endif
-                                @endforeach
-                                {!! implode(' | ', $links) !!}
+{{--                                <?php $links = [] ?>--}}
+{{--                                @foreach($statusList as $key => $value)--}}
+{{--                                    @if($value)--}}
+{{--                                        <?php $selected = Request::get('status') == $key ? 'selected-status' : '' ?>--}}
+{{--                                        <?php $links[] = "<a class=\"{$selected}\" href=\"?status={$key}\">" . ucwords($key) . "({$value})</a>" ?>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+{{--                                {!! implode(' | ', $links) !!}--}}
                             </div>
                         </div>
 
@@ -40,21 +40,20 @@
                             </div>
                         @endif
                         <!-- /.box-header -->
-                        @if($onlyTrashed)
-                        @include('backend.sermons.trash-table')
-                        @else
-                            @include('backend.sermons.table')
-                            @endif
+
+
+                            @include('backend.events.table')
+
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <ul class="pagination pagination-sm no-margin pull-left">
-                                {{$sermons->appends( Request::query())->render()}}
+                                {{$events->render()}}
 
                             </ul>
 
                             <div class="pull-right">
-                                <?php $sermonCount =  $sermons->count()?>
-                                <small>{{$sermonCount}} {{str_plural('Sermon', $sermonCount)}}</small>
+                                <?php $eventCount =  $events->count()?>
+                                <small>{{$eventCount}} {{str_plural('Event', $eventCount)}}</small>
                             </div>
                         </div>
 

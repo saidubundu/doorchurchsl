@@ -3,13 +3,26 @@
 namespace App;
 
 use Carbon\Carbon;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class Sermon extends Model
 {
     //
     use SoftDeletes;
+//    use Sluggable;
+//
+//    public function sluggable()
+//    {
+//        return [
+//            'slug' => [
+//                'source' => 'title'
+//            ]
+//        ];
+//    }
+
     protected $fillable = [
         'title','excerpt','body','image','audio','view_count','published_at'
     ];

@@ -7,16 +7,16 @@
             <th>Date</th>
 
         </tr>
-        @foreach($sermons as $sermon)
+        @foreach($posts as $post)
             <tr>
                 <td>
-                    {!! Form::open(['style' => 'display:inline-block','method' => 'PUT', 'route' => ['sermons.restore', $sermon->id]]) !!}
+                    {!! Form::open(['style' => 'display:inline-block','method' => 'PUT', 'route' => ['posts.restore', $post->id]]) !!}
                     <button title="Restore" class="btn btn-xs btn-default eit-row">
                         <i class="fa fa-refresh"></i>
                     </button>
                     {!! Form::close() !!}
 
-                    {!! Form::open(['style' => 'display:inline-block','method' => 'DELETE', 'route' => ['sermons.force-destroy', $sermon->id]]) !!}
+                    {!! Form::open(['style' => 'display:inline-block','method' => 'DELETE', 'route' => ['posts.force-destroy', $post->id]]) !!}
                     <button type="submit" class="btn btn-xs btn-danger delete-row">
                         <i class="fa fa-remove"></i>
                     </button>
@@ -26,9 +26,9 @@
 
                 </td>
 
-                <td>{{$sermon->title}}</td>
-                <td>{{$sermon->user->name}}</td>
-                <td><abbr title="{{ $sermon->dateFormatted(true) }}">{{$sermon->dateFormatted()}}</abbr> | {!! $sermon->publicationLabel() !!}</td>
+                <td>{{$post->title}}</td>
+                <td>{{$post->user->name}}</td>
+                <td><abbr title="{{ $post->dateFormatted(true) }}">{{$post->dateFormatted()}}</abbr> | {!! $post->publicationLabel() !!}</td>
             </tr>
         @endforeach
 

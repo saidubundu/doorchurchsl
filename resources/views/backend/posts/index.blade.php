@@ -5,12 +5,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Sermons
-                <small>All sermon</small>
+                Blog
+                <small>All blogs</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Sermons</li>
+                <li class="active">Blog</li>
             </ol>
         </section>
 
@@ -20,7 +20,7 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">Sermons</h3>
+                            <h3 class="box-title">Blog</h3>
 
                             <div class="box-tools">
                                 <?php $links = [] ?>
@@ -41,20 +41,20 @@
                         @endif
                         <!-- /.box-header -->
                         @if($onlyTrashed)
-                        @include('backend.sermons.trash-table')
+                        @include('backend.posts.trash-table')
                         @else
-                            @include('backend.sermons.table')
+                            @include('backend.posts.table')
                             @endif
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <ul class="pagination pagination-sm no-margin pull-left">
-                                {{$sermons->appends( Request::query())->render()}}
+                                {{$posts->appends( Request::query())->render()}}
 
                             </ul>
 
                             <div class="pull-right">
-                                <?php $sermonCount =  $sermons->count()?>
-                                <small>{{$sermonCount}} {{str_plural('Sermon', $sermonCount)}}</small>
+                                <?php $postCount =  $posts->count()?>
+                                <small>{{$postCount}} {{str_plural('Post', $postCount)}}</small>
                             </div>
                         </div>
 
