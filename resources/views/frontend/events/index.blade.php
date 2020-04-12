@@ -3,7 +3,7 @@
 @section('content')
 
     <header id="page-banner" class="banner-main-block">
-        <div class="banner-img" style="background-image: url('images/top-banner.jpg')">
+        <div class="banner-img" style="background-image: url({{asset('images/top-banner.jpg')}})">
             <div class="overlay-bg"></div>
             <div class="container">
                 <div class="banner-block">
@@ -80,11 +80,11 @@
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 row-top-spacing">
                     <div class="upcoming-block">
                         <div class="upcoming-img block-effect">
-                            <a href="event-details.html"><img src="{{$event->event_image_url}}" class="img-responsive" alt="upcoming-img-01"></a>
+                           <img src="{{$event->event_image_url}}" class="img-responsive" alt="upcoming-img-01">
                         </div>
                         <div class="upcoming-content">
-                            <a href="event-details.html"><h4 class="upcoming-heading">{{str_limit($event->title, 20)}}.</h4></a>
-                            <p class="upcoming-dtl">{{str_limit($event->body,60)}}</p>
+                            <a href="{{route('event.show', $event->id)}}"><h4 class="upcoming-heading">{{str_limit($event->title, 20)}}.</h4></a>
+                            <p class="upcoming-dtl">{!! str_limit($event->body,60) !!}</p>
                             <a class="read-more" href="{{route('event.show', $event->id)}}">Read More<i class="fa fa-long-arrow-right"></i></a>
                         </div>
                     </div>

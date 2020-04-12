@@ -30,8 +30,13 @@ Author: PeekTower
     <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
     <!-- flat icons css -->
     <link href="{{asset('frontend/css/flaticon.css')}}" rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
     <!-- google font -->
     <link href="https://vjs.zencdn.net/7.7.5/video-js.css" rel="stylesheet" />
+    <svg viewBox="0 0 100 100" class="icon shape-codepen">
+        <use xlink:href="https://cdn.plyr.io/3.5.10/plyr.svg"></use>
+    </svg>
 
     <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
     <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
@@ -292,7 +297,7 @@ Author: PeekTower
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-dtl text-center">
-                    <p>Copyright &copy; {{\Carbon\Carbon::now()->year}} <a href="index.html">The Door Church</a> </p>
+                    <p>Copyright &copy; {{\Carbon\Carbon::now()->year}} <a href="/">The Door Church</a> </p>
                 </div>
             </div>
         </div>
@@ -304,6 +309,8 @@ Author: PeekTower
 <script type="text/javascript" src="{{asset('frontend/js/jquery.min.js')}}"></script>
 <!-- bootstrap js -->
 <script type="text/javascript" src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+
+<script src="https://cdn.plyr.io/3.5.10/plyr.polyfilled.js"></script>
 
 <script type="text/javascript" src="{{asset('frontend/js/APlayer.min.js')}}"></script>
 <!-- owl carousel js -->

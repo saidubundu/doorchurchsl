@@ -14,7 +14,7 @@ class VideoTableSeeder extends Seeder
         //
 
         DB::table('videos')->truncate();
-        $video = "video-" . rand(1,10) . ".mp4";
+        $video = "video-" . rand(1,3) . ".mp4";
         DB::table('videos')->insert([
             [
                 'title' => 'Video',

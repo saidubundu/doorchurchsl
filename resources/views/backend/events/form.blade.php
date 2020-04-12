@@ -39,29 +39,6 @@
     <!--/.col (left) -->
     <!-- right column -->
     <div class="col-md-3">
-{{--        <div class="box box-info">--}}
-{{--            <div class="box-header with-border">--}}
-{{--                <h3 class="box-title">Select Audio</h3>--}}
-{{--            </div>--}}
-{{--            <div class="box-body">--}}
-{{--                <div class="form-group {{$errors->has('audio') ? 'has-error' : ''}}">--}}
-{{--                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">--}}
-{{--                        <div class="fileinput fileinput-new" data-provides="fileinput">--}}
-{{--                                  <span class="btn btn-outline-secondary btn-file">--}}
-{{--                                    <span class="fileinput-new">Select file</span>--}}
-{{--                                    <span class="fileinput-exists">Change</span>--}}
-{{--                                    {!! Form::file('audio') !!}--}}
-{{--                                  </span>--}}
-{{--                            <span class="fileinput-filename">{{$sermon->audio}}</span>--}}
-{{--                            <a href="#" class="close fileinput-exists" data-dismiss="fileinput" style="float: none">&times;</a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    @if($errors->has('audio'))--}}
-{{--                        <span class="help-block">{{$errors->first('audio')}}</span>--}}
-{{--                    @endif--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
 
         <div class="box box-info">
             <div class="box-header with-border">
@@ -131,10 +108,12 @@
 
             <div class="box-footer clearfix">
                 <div class="pull-left">
-                    <a id="draft-btn" href="" class="btn btn-default">Cancel</a>
+                    <a href="{{route('events.index')}}" class="btn btn-default">Cancel</a>
                 </div>
                 <div class="pull-right">
-                    {!! Form::submit('Publish', ['class'=>'btn btn-primary']) !!}
+                    <button type="submit" class="btn btn-primary">
+                        {{ $event->exits ? 'Update' : 'Save' }}
+                    </button>
                 </div>
             </div>
         </div>

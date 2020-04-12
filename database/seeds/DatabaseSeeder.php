@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PastorsTableSeeder::class);
         $this->call(PhotoTableSeeder::class);
         $this->call(VideoTableSeeder::class);
+        $this->call(BibleTableSeeder::class);
 
     }
 }

@@ -67,3 +67,22 @@ Route::delete('/backend/posts/force-delete/{post}', [
 
 ////////// Backend Event Controller
 Route::resource('backend/events', 'Backend\EventsController');
+////////////////////////////
+///
+///
+
+////////// Backend Pastor Controller
+Route::resource('backend/pastors', 'Backend\PastorsController');
+
+////////// Backend Bible Controller
+Route::resource('backend/bible', 'Backend\BibleController');
+
+////////////////////////Backend User Controller
+///
+///
+Route::resource('backend/users', 'Backend\UsersController');
+
+Route::get('backend/users/confirm/{users}',[
+    'uses' => 'Backend\UsersController@confirm',
+    'as' => 'users.confirm'
+]);

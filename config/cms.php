@@ -6,7 +6,8 @@
 
         'audio' => [
             'directory' => 'audio',
-]
+],
+        'default_user_id' => 1,
     ];
 
 

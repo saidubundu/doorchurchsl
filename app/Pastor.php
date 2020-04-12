@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Pastor extends Model
 {
     //
+    protected $fillable = [
+        'name',
+        'position',
+        'pastorImage',
+        'bio',
+        'address',
+        'phone',
+        'email'
+    ];
 
     public function getPastorImageUrlAttribute()
     {

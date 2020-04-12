@@ -34,49 +34,26 @@
                 </div>
                 <div class="row">
                     <div class="portfolio-block portfolio-popup">
-                        @foreach($videos as $video)
                         <div class="col-md-6 col-sm-12 portfolio-item videos">
-                            <div class="video-item">
-                            <video id="my-video"
-                                    class="video-js"
-                                    controls
-                                    preload="auto"
-                                    width=""
-                                    height=""
-                                    poster="MY_VIDEO_POSTER.jpg"
-                                    data-setup="{}"
-                                >
-                                    <source class="img-responsive" src="{{$video->video_url}}" type="video/mp4" />
-                                    <p class="vjs-no-js">
-                                        To view this video please enable JavaScript, and consider upgrading to a
-                                        web browser that
-                                        <a href="https://videojs.com/html5-video-support/" target="_blank"
-                                        >supports HTML5 video</a
-                                        >
-                                    </p>
-                                </video>
-                                <div class="video-device">
-                                    <img class="video-bg-img img-responsive" src="images/gallery/gallery-01.jpg" alt="portfolio-img-1">
-                                    <div class="overlay-bg"></div>
-                                    <div class="video-preview">
-                                        <a href="javascript:void(0);" class="btn-video-play"><img src="images/icons/play-icon.png" alt="btn-play"></a>
-                                    </div>
-                                </div>
-                            </div>
-                                <script src="https://vjs.zencdn.net/7.7.5/video.js"></script>
+                            @foreach($videos as $video)
+                            <div style="display: inline-block" class="video-item ">
 
+                                <video poster="/path/to/poster.jpg" id="player" playsinline controls>
+                                    <source src="{{$video->video_url}}" type="video/mp4" />
+                                    <!-- Captions are optional -->
+                                    <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
+                                </video>
+
+                            </div>
+                                @endforeach
 
                         </div>
-                        @endforeach
-                        <br>
-                            @foreach($photos as $photo)
+                        @foreach($photos as $photo)
                         <div class="col-md-3 col-sm-6 portfolio-item images">
-
                             <div class="portfolio-img">
                                 <img src="{{$photo->photo_url}}" class="img-responsive" alt="portfolio-img-2">
                                 <div class="portfolio-overlay"><a href="{{$photo->photo_url}}"><i class="fa fa-search"></i></a></div>
                             </div>
-
                         </div>
                             @endforeach
                     </div>
@@ -90,4 +67,14 @@
         </div>
     </section>
 
+@stop
+@section('script')
+    <script>
+        const player = new Plyr('#player',{
+            controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'],
+            loadSprite: true,
+            iconUrl: '{{asset('sprite')}}',
+            seekTime: 10,
+        });
+    </script>
     @stop
