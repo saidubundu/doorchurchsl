@@ -75,15 +75,23 @@
 
                                 <p>
                                     {{Auth::user()->name}}
-                                    <small>Member since Nov. 2012</small>
+                                    <small>{{Auth::user()->roles->first()->display_name}}</small>
                                 </p>
                             </li>
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="{{url('/edit-account')}}" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="" class="btn btn-default btn-flat">Sign out</a>
+                                    <a class="btn btn-default" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        Sign out
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </div>
                             </li>
                         </ul>
@@ -125,7 +133,7 @@
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
-
+                @if(check_user_permissions(request(), "Sermons@index"))
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-file-text"></i>
@@ -138,7 +146,9 @@
                         <li><a href="{{route('sermons.create')}}"><i class="fa fa-circle-o"></i> Add new sermon</a></li>
                     </ul>
                 </li>
+                @endif
 
+                @if(check_user_permissions(request(), "Events@index"))
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-calendar-o"></i>
@@ -152,7 +162,9 @@
                         <li><a href="{{route('events.create')}}"><i class="fa fa-circle-o"></i> Add new event</a></li>
                     </ul>
                 </li>
+                @endif
 
+                @if(check_user_permissions(request(), "Pastors@index"))
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-user-circle"></i>
@@ -166,6 +178,8 @@
                         <li><a href="{{route('pastors.create')}}"><i class="fa fa-circle-o"></i> Add new pastor</a></li>
                     </ul>
                 </li>
+                @endif
+
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-edit"></i> <span>Blog</span>
@@ -199,11 +213,12 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-circle-o"></i> All Bible verse</a></li>
-                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Add Bible verse</a></li>
+                        <li><a href="{{route('bible.index')}}"><i class="fa fa-circle-o"></i> All Bible verse</a></li>
+                        <li><a href="{{route('bible.create')}}"><i class="fa fa-circle-o"></i> Add Bible verse</a></li>
                     </ul>
                 </li>
 
+                @if(check_user_permissions(request(), "Users@index"))
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-group"></i> <span>Users</span>
@@ -212,10 +227,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> All users</a></li>
-                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Add user</a></li>
+                        <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i> All users</a></li>
+                        <li><a href="{{route('users.create')}}"><i class="fa fa-circle-o"></i> Add user</a></li>
                     </ul>
                 </li>
+                @endif
 
             </ul>
         </section>

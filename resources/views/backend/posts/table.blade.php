@@ -7,17 +7,30 @@
             <th>Date</th>
 
         </tr>
+        <?php $request = request(); ?>
         @foreach($posts as $post)
             <tr>
                 <td>
                     {!! Form::open(['style' => 'display:inline-block','method' => 'DELETE', 'route' => ['posts.destroy', $post->id]]) !!}
+                    @if(check_user_permissions($request, "Posts@edit", $post->id))
                     <a title="Edit" class="btn btn-xs btn-default eit-row" href="{{route('posts.edit',$post->id)}}">
                         <i class="fa fa-edit"></i>
                     </a>
+                    @else
+                        <a title="" href="#" class="btn btn-xs btn-default eit-row disabled">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                    @endif
 
+                    @if(check_user_permissions($request, "Posts@destroy", $post->id))
                     <button title="trash" type="submit" class="btn btn-xs btn-danger delete-row">
                         <i class="fa fa-trash"></i>
                     </button>
+                    @else
+                        <button title="trash" type="submit" class="btn btn-xs btn-danger delete-row disabled">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    @endif
 
 
                     {!! Form::close() !!}

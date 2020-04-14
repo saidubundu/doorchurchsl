@@ -52,6 +52,7 @@ class SermonsController extends BackendController
 
     private function statusList($request){
         return [
+            'own' => $request->user()->posts()->count(),
             'all' =>  Sermon::count(),
             'published' => Sermon::published()->count(),
             'scheduled' => Sermon::scheduled()->count(),

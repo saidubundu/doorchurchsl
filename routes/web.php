@@ -25,7 +25,9 @@ Route::resource('/pastor', 'PastorController');
 // // /// /// //// /// / / / / // / / /
 Auth::routes();
 
-Route::get('backend/home', 'Backend\HomeController@index')->name('home');
+Route::get('home', 'Backend\HomeController@index')->name('home');
+Route::get('/edit-account', 'Backend\HomeController@edit');
+Route::put('/edit-account', 'Backend\HomeController@update');
 
 //Backend Sermon Controller
 

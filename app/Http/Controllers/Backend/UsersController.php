@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserDestroyRequest;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,8 @@ class UsersController extends BackendController
     public function create(User $user)
     {
         //
-        return view('backend.users.create', compact('user'));
+        $roles = Role::pluck('display_name','id')->all();
+        return view('backend.users.create', compact('user','roles'));
     }
 
     /**
@@ -46,7 +48,8 @@ class UsersController extends BackendController
         //
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
-        User::create($data);
+        $user = User::create($data);
+        $user->attachRole($request->role);
 
         return redirect('backend/users')->with('message', 'New User Added');
     }
@@ -71,8 +74,9 @@ class UsersController extends BackendController
     public function edit($id)
     {
         //
+        $roles = Role::pluck('display_name','id')->all();
         $user = User::findOrFail($id);
-        return view('backend.users.edit',compact('user'));
+        return view('backend.users.edit',compact('user','roles'));
     }
 
     /**
@@ -87,6 +91,9 @@ class UsersController extends BackendController
         //
         $user = User::findOrFail($id);
         $user->update(!isset($request->password) ? $request->except(['password']) : $request->all());
+
+        $user->detachRole($user->role);
+        $user->attachRole($request->role);
 
         return redirect('backend/users')->with('message', 'User Added Updated');
     }
