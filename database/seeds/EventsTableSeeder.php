@@ -21,7 +21,7 @@ class EventsTableSeeder extends Seeder
         $date = Carbon::create(2020,4,20,9);
 
         for ($i = 1; $i <= 20; $i++){
-            $image = "event-img-" . rand(1,6) . ".jpg";
+            $image = "event-grid-img" . rand(1,9) . ".jpg";
             $date->addDays(1);
             $events[]=[
                 'title' => $faker->sentence(rand(8,12)),

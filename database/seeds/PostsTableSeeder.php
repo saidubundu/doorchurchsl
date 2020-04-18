@@ -21,8 +21,8 @@ class PostsTableSeeder extends Seeder
         $faker = Factory::create();
         $date = Carbon::create(2020, 3,18, 9);
 
-        for($i = 1; $i <= 10; $i++){
-            $image = "post-img-" . rand(1,12) . ".jpg";
+        for($i = 1; $i <= 15; $i++){
+            $image = "blog-grid-img" . rand(1,9) . ".jpg";
             $date->addDays(1);
             $publishedDate = clone($date);
             $createdDate = clone ($date);

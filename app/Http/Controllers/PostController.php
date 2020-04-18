@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -14,7 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+//                $time = $posts->created_at;
+////                $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->month;
         $posts = Post::latestFirst()->published()->paginate(6);
         return view('frontend.post.index', compact('posts'));
     }

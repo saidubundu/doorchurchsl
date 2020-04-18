@@ -14,7 +14,7 @@ class PhotoTableSeeder extends Seeder
     {
         //
         DB::table('photos')->truncate();
-        $Image = "photo-" . rand(1,10) . ".jpg";
+        $Image = "side-gallery-img" . rand(1,9) . ".jpg";
         DB::table('photos')->insert([
             [
                 'title' => 'Photo',

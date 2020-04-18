@@ -2,98 +2,85 @@
 
 @section('content')
 
-    <header id="page-banner" class="banner-main-block">
-        <div class="banner-img" style="background-image: url({{asset('images/top-banner.jpg')}})">
-            <div class="overlay-bg"></div>
+    <!--// SubHeader \\-->
+    <div class="church-subheader">
+        <div class="church-subheader-text">
+            <span class="church-subheader-transparent"></span>
             <div class="container">
-                <div class="banner-block">
-                    <h3 class="section-heading">Events</h3>
-                    <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a>Event</a></li>
-                    </ol>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Event Grid</h1>
+                        <div class="clearfix"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipi scing elit. Aliquam ac egestas velit</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
-    <!--  end page banner -->
-    <!--  event slider -->
-    <section id="events" class="events-main-block event-two">
-        <div class="container">
-            <div id="event-slider-two" class="event-slider-two">
-                <div class="item event-block">
-                    <div class="event-img">
-                        <img src="images/event/event-page-slider.jpg" class="img-responsive" alt="event-slider-1">
-                        <div class="overlay-bg"></div>
-                    </div>
-                    <div class="event-countdown">
-                        <div class="coming-countdown" data-countdown="2017/4/30"></div>
+        <div class="church-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Event Grid</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="item event-block">
-                    <div class="event-img">
-                        <img src="images/event/event-page-slider.jpg" class="img-responsive" alt="event-slider-2">
-                        <div class="overlay-bg"></div>
-                    </div>
-                    <div class="event-countdown">
-                        <div class="coming-countdown" data-countdown="2017/4/30"></div>
-                    </div>
-                </div>
-                <div class="item event-block">
-                    <div class="event-img">
-                        <img src="images/event/event-page-slider.jpg" class="img-responsive" alt="event-slider-3">
-                        <div class="overlay-bg"></div>
-                    </div>
-                    <div class="event-countdown">
-                        <div class="coming-countdown" data-countdown="2017/4/30"></div>
-                    </div>
-                </div>
-                <div class="item event-block">
-                    <div class="event-img">
-                        <img src="images/event/event-page-slider.jpg" class="img-responsive" alt="event-slider-4">
-                        <div class="overlay-bg"></div>
-                    </div>
-                    <div class="event-countdown">
-                        <div class="coming-countdown" data-countdown="2017/4/30"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="section text-center">
-                <h3 class="event-heading">Nullam ullamcorper ultricies nulla mattis blandit Praesent dignissim quam bibendum.</h3>
-                <h5 class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at euismod ex. Maecenas sit amet sollicitudin ex.</h5>
             </div>
         </div>
-    </section>
-    <!--  end events -->
-    <!--  speaker -->
+    </div>
+    <!--// SubHeader \\-->
 
-    <!--  end speaker -->
-    <!--  upcoming events  -->
-    <section id="upcoming-events" class="upcoming-main-block">
-        <div class="container">
-            <div class="section text-center">
-                <h3 class="section-heading">Upcoming Events</h3>
-                <h5 class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at  euismod ex, Maeceans sit amet sollicitudin ex.</h5>
-            </div>
-            <div class="row">
-                @foreach($events as $event)
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 row-top-spacing">
-                    <div class="upcoming-block">
-                        <div class="upcoming-img block-effect">
-                           <img src="{{$event->event_image_url}}" class="img-responsive" alt="upcoming-img-01">
+
+    <!--// Main Content \\-->
+    <div class="church-main-content">
+
+        <!--// Main Section \\-->
+        <div class="church-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="church-event church-event-grid">
+                            <ul class="row">
+                                @foreach($events as $event)
+                                <li class="col-md-4">
+                                    <figure><span>event</span><a href="{{route('event.show',$event->id)}}"><img src="{{$event->image_url ? $event->image_url : '/images/holder/posts.png'}}" alt=""><span>Join us</span></a>
+                                        <figcaption class="church-time-date"><span>10</span> <small>Feb 2018</small></figcaption>
+                                    </figure>
+                                    <div class="church-event-grid-text">
+                                        <h2><a href="{{route('event.show',$event->id)}}">{{str_limit($event->title, 30)}}</a></h2>
+                                        <ul class="event-grid-option">
+                                            <li><i class="icon church-location-pin"></i>{{$event->location}}</li>
+                                            <li><i class="icon church-clock2"></i>7:00pm - 8:30pm</li>
+                                        </ul>
+                                        <p>{{str_limit($event->body, 50)}}</p>
+                                        <a href="{{route('event.show',$event->id)}}" class="church-blog-readmore church-bgcolor">Read Detail</a>
+                                    </div>
+                                </li>
+                            @endforeach
+                            </ul>
                         </div>
-                        <div class="upcoming-content">
-                            <a href="{{route('event.show', $event->id)}}"><h4 class="upcoming-heading">{{str_limit($event->title, 20)}}.</h4></a>
-                            <p class="upcoming-dtl">{!! str_limit($event->body,60) !!}</p>
-                            <a class="read-more" href="{{route('event.show', $event->id)}}">Read More<i class="fa fa-long-arrow-right"></i></a>
+                        <!--// Pagination \\-->
+                        <div class="church-pagination">
+                            <ul class="page-numbers">
+                                <li><a class="previous page-numbers" href="404.html"><span aria-label="Next"><i class="fa fa-angle-left"></i></span></a></li>
+                                <li><span class="page-numbers current">01</span></li>
+                                <li><a class="page-numbers" href="404.html">02</a></li>
+                                <li><a class="page-numbers" href="404.html">03</a></li>
+                                <li><a class="page-numbers" href="404.html">04</a></li>
+                                <li><a class="next page-numbers" href="404.html"><span aria-label="Next"><i class="fa fa-angle-right"></i></span></a></li>
+                            </ul>
                         </div>
+                        <!--// Pagination \\-->
                     </div>
+
                 </div>
-                    @endforeach
             </div>
         </div>
-    </section>
-    <!-- end upcoming -->
-    <!--  end supporter -->
+        <!--// Main Section \\-->
 
-    @stop
+    </div>
+    <!--// Main Content \\-->
+
+@stop

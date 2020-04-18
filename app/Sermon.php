@@ -6,9 +6,11 @@ use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
 
-class Sermon extends Model
+class Sermon extends Model implements Searchable
 {
     //
     use SoftDeletes;
@@ -99,4 +101,15 @@ class Sermon extends Model
         }
     }
 
+    public function getSearchResult(): SearchResult
+    {
+        // TODO: Implement getSearchResult() method.
+        $url = route('sermon.show', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
+    }
 }

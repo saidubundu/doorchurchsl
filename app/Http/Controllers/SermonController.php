@@ -15,7 +15,7 @@ class SermonController extends Controller
     public function index()
     {
         //
-        $sermons = Sermon::latestFirst()->published()->paginate(6);
+        $sermons = Sermon::latestFirst()->published()->paginate(9);
         return view('frontend.sermon.index',compact('sermons'));
     }
 

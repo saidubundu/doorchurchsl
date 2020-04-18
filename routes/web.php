@@ -21,6 +21,20 @@ Route::resource('/sermon', 'SermonController');
 Route::resource('/post', 'PostController');
 Route::resource('/gallery', 'GalleryController');
 Route::resource('/pastor', 'PastorController');
+Route::get('/about', [
+    'uses' => 'FrontendController@about',
+    'as' => 'about'
+]);
+
+Route::get('/search-result', [
+    'uses' => 'SearchController@search',
+    'as' => 'search.result'
+]);
+
+Route::get('/search', [
+    'uses' => 'SearchController@index',
+    'as' => 'search'
+]);
 
 // // /// /// //// /// / / / / // / / /
 Auth::routes();

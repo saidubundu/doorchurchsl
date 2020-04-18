@@ -1,53 +1,84 @@
 @extends('layouts.frontend')
 @section('content')
-    <!--  page banner -->
-    <header id="page-banner" class="banner-main-block">
-        <div class="banner-img" style="background-image: url({{asset('images/top-banner.jpg')}})">
-            <div class="overlay-bg"></div>
+    <!--// SubHeader \\-->
+    <div class="church-subheader">
+        <div class="church-subheader-text">
+            <span class="church-subheader-transparent"></span>
             <div class="container">
-                <div class="banner-block">
-                    <h3 class="section-heading">Blog</h3>
-                    <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a>Blog</a></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!--  end page banner-->
-    <!--  blog  -->
-    <section id="news" class="news-main-block news-two">
-        <div class="container">
-            <div class="row">
-                @foreach($posts as $post)
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 row-top-spacing">
-                    <div class="news-block">
-
-                        <div class="news-img block-effect">
-                            <a><img src="{{$post->image_url ? $post->image_url : '/images/holder/posts.png'}}" class="img-responsive img-fluid" alt="blog-img-3"></a>
-                        </div>
-
-                        <div class="news-content">
-                            <div class="news-desc">
-                                <p class="news-date"><i class="fa fa-calendar"></i>Posted {{$post->created_at->diffForHumans()}}</p>
-                                <p class="news-by"><i class="fa fa-user"></i>Post By : <a href="#">{{$post->user->name}}</a></p>
-                            </div>
-                            <a href="{{route('post.show', $post->id)}}"><h4 class="news-heading">{{str_limit($post->title,20)}}</h4></a>
-                            <p class="news-dtl">{{str_limit($post->excerpt,150)}}</p>
-                            <a class="read-more" href="{{route('post.show', $post->id)}}">Read More<i class="fa fa-long-arrow-right"></i></a>
-                        </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Blog Grid</h1>
+                        <div class="clearfix"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipi scing elit. Aliquam ac egestas velit</p>
                     </div>
                 </div>
-                    @endforeach
-
             </div>
-            <div class="row">
-                <div class="col-md-12 load-more text-center">
-                    <span class="load-more-btn"><a href="#" class="btn btn-default">Load More</a></span>
+        </div>
+        <div class="church-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Blog Grid</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!--  end blog -->
+    </div>
+    <!--// SubHeader \\-->
+
+
+    <!--// Main Content \\-->
+    <div class="church-main-content">
+
+        <!--// Main Section \\-->
+        <div class="church-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="church-blog church-blog-grid">
+                            <ul class="row">
+                                @foreach($posts as $post)
+                                <li class="col-md-4">
+                                    <div class="church-blog-grid-wrap">
+                                        <figure><a href="{{route('post.show', $post->id)}}"><img src="{{$post->image_url ? $post->image_url : '/images/holder/posts.png'}}" alt=""><i class="icon church-unlink"></i></a>
+                                            <figcaption class="church-time-date"><span>12</span> <small>May 2018</small></figcaption>
+                                        </figure>
+                                        <div class="church-bloggrid-slidetext">
+                                            <h2><a href="{{route('post.show', $post->id)}}">{{$post->title}}</a></h2>
+                                            <ul class="church-blog-option">
+                                                <li>by <a href="404.html">{{$post->user->name}}</a></li>
+                                                <li><i class="fa fa-comments-o"></i> <a href="404.html">13 comments</a></li>
+                                            </ul>
+                                            <p>{!! str_limit($post->excerpt, 100) !!}</p>
+                                            <a href="{{route('post.show', $post->id)}}" class="church-blog-readmore church-bgcolor">Read Article</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                        <div class="church-pagination">
+                            <ul class="page-numbers">
+                                <li><a class="previous page-numbers" href="404.html"><span aria-label="Next"><i class="fa fa-angle-left"></i></span></a></li>
+                                <li><span class="page-numbers current">01</span></li>
+                                <li><a class="page-numbers" href="404.html">02</a></li>
+                                <li><a class="page-numbers" href="404.html">03</a></li>
+                                <li><a class="page-numbers" href="404.html">04</a></li>
+                                <li><a class="next page-numbers" href="404.html"><span aria-label="Next"><i class="fa fa-angle-right"></i></span></a></li>
+                            </ul>
+                        </div>
+                        <!--// Pagination \\-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
     @stop

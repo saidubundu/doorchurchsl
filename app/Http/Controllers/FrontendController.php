@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Bible;
 use App\Event;
+use App\Photo;
+use App\Post;
+use App\Sermon;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -15,8 +20,25 @@ class FrontendController extends Controller
     public function index()
     {
         //
-        $events = Event::latest()->paginate(6);
-        return view('frontend.index', compact('events'));
+//        $time = "2020-4-5 05:06:01";
+//        $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->shortMonthName;
+//        dd($year);
+        $bibles = Bible::latest()->paginate(4);
+        $events = Event::latest()->paginate(4);
+        $sermons = Sermon::latest()->paginate(4);
+        $photos = Photo::latest()->paginate(8);
+        $posts = Post::published()->latest()->paginate(4);
+        return view('frontend.index', compact('events','bibles', 'sermons','photos','posts'));
+    }
+
+    public function about()
+    {
+        return view('frontend.about');
+    }
+
+    public function search()
+    {
+        return view('frontend.search');
     }
 
     /**

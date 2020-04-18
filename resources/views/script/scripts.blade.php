@@ -13,7 +13,19 @@
             });
         });
 
-        $('#excerpt').wysihtml5();
-        $('#body').wysihtml5();
+        // CKEDITOR.replace( 'body', {
+        //     filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+        //     filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+        // } );
+        CKEDITOR.replace('excerpt');
+
+        CKEDITOR.replace('body');
+
+        // $('#excerpt').wysihtml5();
+        // $('#body').wysihtml5({
+        //    toolbar: {
+        //        "color": true //Button to change color of font
+        //    }
+        // });
     </script>
 @stop

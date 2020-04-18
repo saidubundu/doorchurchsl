@@ -22,7 +22,7 @@ class SermonsTableSeeder extends Seeder
         $date = Carbon::create(2020, 3,23, 9);
 
         for($i = 1; $i <= 10; $i++){
-            $image = "sermon-img-" . rand(1,5) . ".jpg";
+            $image = "sermon-grid-img" . rand(1,5) . ".jpg";
             $audio = "audio-" . rand(1,2) . ".mp3";
             $date->addDays(1);
             $publishedDate = clone($date);

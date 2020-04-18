@@ -2,145 +2,301 @@
 
 @section('content')
 
-    <!--  page banner -->
-    <header id="page-banner" class="banner-main-block">
-        <div class="banner-img" style="background-image: url({{asset('images/top-banner.jpg')}})">
-            <div class="overlay-bg"></div>
+    <div class="church-subheader">
+        <div class="church-subheader-text">
+            <span class="church-subheader-transparent"></span>
             <div class="container">
-                <div class="banner-block">
-                    <h3 class="section-heading">Events</h3>
-                    <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a>Event Details</a></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!--  end  page banner-->
-    <!--  event background -->
-    <section id="event-dtl-bg" class="event-bg-block">
-        <div class="bg-img" style="background-image: url({{$event->event_image_url}})">
-            <div class="overlay-bg"></div>
-            <div class="event-bg-content">
-                <div class="event-countdown">
-                    <div class="coming-countdown" data-countdown=""></div>
-                </div>
-                <div class="event-calendar">
-                    <span><i class="fa fa-calendar"></i></span>
-                    <h5 class="event-date">{{$event->date}}</h5>
-                </div>
-                <div class="event-address">
-                    <span><i class="fa fa-map-marker"></i></span>
-                    <h5 class="event-venue">20 March 2017. Postal Address<br>Box 16122 Collins Street West.<br>Phone +61 38376 6284.</h5>
-                </div>
-                <div class="load-more-btn">
-                    <a class="btn btn-default">Buy Ticket</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--  end events background-->
-    <!--  event detail -->
-    <section id="event-dtl-block" class="event-dtl-block">
-        <div class="container">
-            <div class="event-dtl-section">
-                <h3 class="event-dtl-heading">Nullam ullamcorper ultricies nulla mattis blandit<br> Praesent dignissim quam bibendum.</h3>
-                <p>Vivamus elementum, purus sit amet lobortis ornare, justo velit sollicitudin justo, sed faucibus neque sem eget metus. Sed pretium ullamcorper nunc eu dictum. Maecenas id porta enim. Praesent lobortis urna felis, sed tempor tellus gravida sit amet. Aliquam mauris risus, rhoncus in eros ut, scelerisque semper leo. Quisque interdum accumsan urna vel scelerisque. Duis fermentum luctus lobortis. Morbi cursus velit non purus efficitur hendrerit. Etiam id lorem placerat, hendrerit nibh ut, pharetra diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam lacus arcu, aliquet eget accumsan in, accumsan id nisl. Nulla facilisi. Donec egestas finibus ullamcorper.</p>
-            </div>
-            <div class="event-dtl-content">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6 hidden-xs">
-                        <div class="event-dtl-img block-effect">
-                            <img src="images/event/event-dtl-01.jpg" class="img-responsive" alt="speaker-img-1">
-                        </div>
+                    <div class="col-md-12">
+                        <h1>Event Detail</h1>
+                        <div class="clearfix"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipi scing elit. Aliquam ac egestas velit</p>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="event-manager-dtl">
-                            <div class="manager-img">
-                                <img src="images/event/event-dtl-06.jpg" class="img-responsive" alt="speaker-img-1">
+                </div>
+            </div>
+        </div>
+        <div class="church-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Event Detail</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+
+    <!--// Main Content \\-->
+    <div class="church-main-content">
+
+        <!--// Main Section \\-->
+        <div class="church-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-9">
+                        <div class="church-event-detail">
+                            <figure class="church-event-thumb"><img src="{{$event->image_url ? $event->image_url : '/images/holder/posts.png'}}" alt="">
+                                <figcaption>
+                                    <div class="church-event-countdown" id="church-event-countdown"></div>
+                                </figcaption>
+                            </figure>
+                            <div class="church-event-heading">
+                                <h2>{{$event->title}}</h2>
+                                <div class="church-event-option">
+                                    <ul class="church-cause-option">
+                                        <li><strong>Started Date: </strong> <time datetime="2008-02-14 20:00">21 Aug 2018</time></li>
+                                        <li><strong>Completion Date: </strong> <time datetime="2008-02-14 20:00">31 Aug 2018</time></li>
+                                        <li><strong>Tags: </strong> <a href="404.html">charity,</a><a href="404.html">donation</a></li>
+                                    </ul>
+                                    <a href="404.html" class="church-blog-readmore church-bgcolor">Donate Now</a>
+                                </div>
                             </div>
-                            <h4 class="manager-post">Event Manager</h4>
-                            <div class="social-icon social-two">
-                                <ul>
-                                    <li><a href="https://plus.google.com/" target="_blank" class="google-plus"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="https://www.twitter.com/" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="https://www.facebook.com/" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="https://www.youtube.com/" target="_blank" class="youtube"><i class="fa fa-youtube-play"></i></a></li>
+                            <div class="church-rich-editor">
+                                {!! $event->body !!}
+                            </div>
+                            <div class="church-post-tags">
+                                <div class="church-social-tag">
+                                    <a href="404.html">Videos</a>
+                                    <a href="404.html">Prayer</a>
+                                    <a href="404.html">Author</a>
+                                    <a href="404.html">Church</a>
+                                </div>
+                                <div class="church-blog-social">
+                                    <ul>
+                                        <li><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+                                        <li><a href="https://twitter.com/login?lang=en" class="fa fa-twitter"></a></li>
+                                        <li><a href="https://www.pinterest.com/login/" class="fa fa-pinterest-p"></a></li>
+                                        <li><a href="https://plus.google.com/" class="fa fa-google-plus"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <h2 class="church-section-heading">[ Event Speakers ]</h2>
+                            <div class="church-event church-event-speaker">
+                                <ul class="row">
+                                    <li class="col-md-4">
+                                        <figure><a href="event-detail.html"><img src="extra-images/related-speaker-img1.jpg" alt=""></a>
+                                            <figcaption>
+                                                <h4><a href="event-detail.html">Darren Martyn</a></h4>
+                                                <span>Speaker</span>
+                                                <p>Sed diam risus, auctor et dui vel, rhoncus finibus lorem. Orci varius natoque penatibus et magnis dis partu.</p>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                    <li class="col-md-4">
+                                        <figure><a href="event-detail.html"><img src="extra-images/related-speaker-img2.jpg" alt=""></a>
+                                            <figcaption>
+                                                <h4><a href="event-detail.html">Sarena Doe</a></h4>
+                                                <span>Speaker</span>
+                                                <p>Sed diam risus, auctor et dui vel, rhoncus finibus lorem. Orci varius natoque penatibus et magnis dis partu.</p>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
+                                    <li class="col-md-4">
+                                        <figure><a href="event-detail.html"><img src="extra-images/related-speaker-img3.jpg" alt=""></a>
+                                            <figcaption>
+                                                <h4><a href="event-detail.html">Marlon Roy</a></h4>
+                                                <span>Speaker</span>
+                                                <p>Sed diam risus, auctor et dui vel, rhoncus finibus lorem. Orci varius natoque penatibus et magnis dis partu.</p>
+                                            </figcaption>
+                                        </figure>
+                                    </li>
                                 </ul>
                             </div>
-                            <p>Vivamus elementum, purus sit amet lobortis ornare, justo velit sollicitudin justo, sed faucibus neque sem eget metus. Sed pretium ullamcorper nunc eu dictum. Maecenas id porta enim. </p>
+
+                            <h2 class="church-section-heading">[ Event Location ]</h2>
+                            <div class="church-event-map"><div id="map"></div></div>
+
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-3 hidden-sm hidden-xs">
-                        <div class="event-dtl-img block-effect">
-                            <img src="images/event/event-dtl-05.jpg" class="img-responsive" alt="speaker-img-1">
+
+                    <!--// Sidebar \\-->
+                    <aside class="col-md-3">
+
+                        <!--// Widget Search \\-->
+                        <div class="widget widget_search">
+                            <form>
+                                <input value="Type here" onblur="if(this.value == '') { this.value ='Type here'; }" onfocus="if(this.value =='Type here') { this.value = ''; }" tabindex="0" type="text">
+                                <label><input type="submit" value=""></label>
+                            </form>
                         </div>
-                    </div>
-                </div>
-                <div class="row row-top-spacing">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="event-dtl-img block-effect">
-                            <img src="images/event/event-dtl-02.jpg" class="img-responsive" alt="speaker-img-1">
+                        <!--// Widget Search \\-->
+
+                        <!--// Widget Cetagories \\-->
+                        <div class="widget widget_cetagories">
+                            <h2 class="church-widget-heading">[ Cetagories ]</h2>
+                            <ul>
+                                <li><a href="404.html">Teams</a></li>
+                                <li><a href="404.html">Charity</a></li>
+                                <li><a href="404.html">Donation</a></li>
+                                <li><a href="404.html">Blogs</a></li>
+                                <li><a href="404.html">Sermons</a></li>
+                                <li><a href="404.html">Events</a></li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="event-dtl-img block-effect">
-                            <img src="images/event/event-dtl-03.jpg" class="img-responsive" alt="speaker-img-1">
+                        <!--// Widget Cetagories \\-->
+
+                        <!--// Widget Popular News \\-->
+                        <div class="widget widget_popular_news">
+                            <h2 class="church-widget-heading">[ Popular News ]</h2>
+                            <ul>
+                                <li>
+                                    <figure><a href="blog-detail.html"><img src="extra-images/popular-post-img1.jpg" alt=""></a></figure>
+                                    <div class="widget-popular-news-text">
+                                        <h6><a href="blog-detail.html">Sed vulputate elem ntum aliquam.</a></h6>
+                                        <time datetime="2008-02-14 20:00"><i class="icon church-calendar-icon"></i> 21 Aug 2017</time>
+                                    </div>
+                                </li>
+                                <li>
+                                    <figure><a href="blog-detail.html"><img src="extra-images/popular-post-img2.jpg" alt=""></a></figure>
+                                    <div class="widget-popular-news-text">
+                                        <h6><a href="blog-detail.html">Sed vulputate elem ntum aliquam.</a></h6>
+                                        <time datetime="2008-02-14 20:00"><i class="icon church-calendar-icon"></i> 21 Aug 2017</time>
+                                    </div>
+                                </li>
+                                <li>
+                                    <figure><a href="blog-detail.html"><img src="extra-images/popular-post-img3.jpg" alt=""></a></figure>
+                                    <div class="widget-popular-news-text">
+                                        <h6><a href="blog-detail.html">Sed vulputate elem ntum aliquam.</a></h6>
+                                        <time datetime="2008-02-14 20:00"><i class="icon church-calendar-icon"></i> 21 Aug 2017</time>
+                                    </div>
+                                </li>
+                                <li>
+                                    <figure><a href="blog-detail.html"><img src="extra-images/popular-post-img4.jpg" alt=""></a></figure>
+                                    <div class="widget-popular-news-text">
+                                        <h6><a href="blog-detail.html">Sed vulputate elem ntum aliquam.</a></h6>
+                                        <time datetime="2008-02-14 20:00"><i class="icon church-calendar-icon"></i> 21 Aug 2017</time>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="event-dtl-img block-effect">
-                            <img src="images/event/event-dtl-04.jpg" class="img-responsive" alt="speaker-img-1">
+                        <!--// Widget Popular News \\-->
+
+                        <!--// Widget Upcoming Events \\-->
+                        <div class="widget widget_upcoming_event">
+                            <h2 class="church-widget-heading">[ Upcoming Events ]</h2>
+                            <ul>
+                                <li>
+                                    <time datetime="2008-02-14 20:00"> 21 <span>Aug</span></time>
+                                    <section>
+                                        <h6><a href="event-detail.html">Ut gravida nulla iad ornare sodales</a></h6>
+                                        <a href="event-detail.html">By Mark Jordan</a>
+                                    </section>
+                                </li>
+                                <li>
+                                    <time datetime="2008-02-14 20:00"> 13 <span>Sep</span></time>
+                                    <section>
+                                        <h6><a href="event-detail.html">Cras in sapien ultri ces, molestie</a></h6>
+                                        <a href="event-detail.html">By Mark Jordan</a>
+                                    </section>
+                                </li>
+                                <li>
+                                    <time datetime="2008-02-14 20:00"> 08 <span>Nov</span></time>
+                                    <section>
+                                        <h6><a href="event-detail.html">Aenean ultricis tell us eget sem</a></h6>
+                                        <a href="event-detail.html">By Mark Jordan</a>
+                                    </section>
+                                </li>
+                                <li>
+                                    <time datetime="2008-02-14 20:00"> 11 <span>Nov</span></time>
+                                    <section>
+                                        <h6><a href="event-detail.html">Vivamus malesu as ada nunc nibh</a></h6>
+                                        <a href="event-detail.html">By Mark Jordan</a>
+                                    </section>
+                                </li>
+                            </ul>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="event-dtl-sectionTwo">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at ante at lacus placerat mattis. Morbi egestas porta consectetur. Vestibulum pharetra dolor nulla, in sollicitudin justo interdum eu. Vivamus elementum, purus sit amet lobortis ornare, justo velit sollicitudin justo, sed faucibus neque sem eget metus. Sed pretium ullamcorper nunc eu dictum. Maecenas id porta enim. Praesent lobortis urna felis, sed tempor tellus gravida sit amet. Aliquam mauris risus, rhoncus in eros ut, scelerisque semper leo. Quisque interdum accumsan urna vel scelerisque. Duis fermentum luctus lobortis. Morbi cursus velit non purus efficitur hendrerit. Etiam id lorem placerat, hendrerit nibh ut, pharetra diam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam lacus arcu, aliquet eget accumsan in, accumsan id nisl. Nulla facilisi. Donec egestas finibus ullamcorper.</p>
+                        <!--// Widget Upcoming Events \\-->
+
+                        <!--// Widget Caendar \\-->
+                        <div class="widget widget_calendar">
+                            <h2 class="church-widget-heading">[ Calendar Archives ]</h2>
+                            <table>
+                                <caption> January 2018 </caption>
+                                <thead>
+                                <tr>
+                                    <th title="Monday">M</th>
+                                    <th title="Tuesday">T</th>
+                                    <th title="Wednesday">W</th>
+                                    <th title="Thursday">T</th>
+                                    <th title="Friday">F</th>
+                                    <th title="Saturday">S</th>
+                                    <th title="Sunday">S</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="5"></td><td id="today">1</td><td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>17</td><td>18</td><td>19</td><td>20</td><td class="active">21</td><td>22</td><td>23</td>
+                                </tr>
+                                <tr>
+                                    <td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+                                </tr>
+                                <tr>
+                                    <td>31</td><td colspan="6"></td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
-                    </div>
+                        <!--// Widget Caendar \\-->
+
+                        <!--// Widget Gallery \\-->
+                        <div class="widget widget_gallery">
+                            <h2 class="church-widget-heading">[ Instagram Photos ]</h2>
+                            <ul>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img1.jpg" class="fancybox"><img src="extra-images/side-gallery-img1.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img2.jpg" class="fancybox"><img src="extra-images/side-gallery-img2.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img3.jpg" class="fancybox"><img src="extra-images/side-gallery-img3.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img4.jpg" class="fancybox"><img src="extra-images/side-gallery-img4.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img5.jpg" class="fancybox"><img src="extra-images/side-gallery-img5.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img6.jpg" class="fancybox"><img src="extra-images/side-gallery-img6.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img7.jpg" class="fancybox"><img src="extra-images/side-gallery-img7.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img8.jpg" class="fancybox"><img src="extra-images/side-gallery-img8.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                                <li>
+                                    <figure><a data-fancybox-group="group" href="extra-images/side-gallery-img9.jpg" class="fancybox"><img src="extra-images/side-gallery-img9.jpg" alt=""><i class="fa fa-angle-double-right"></i></a></figure>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--// Widget Gallery \\-->
+
+                    </aside>
+                    <!--// Sidebar \\-->
+
                 </div>
             </div>
         </div>
-    </section>
-    <!--  end speaker -->
-    <!--  upcoming events  -->
-    <section id="upcoming-events" class="upcoming-main-block upcoming-two">
-        <div class="container">
-            <div class="section text-center">
-                <h3 class="section-heading">Upcoming Events</h3>
-                <h5 class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at  euismod ex, Maeceans sit amet sollicitudin ex.</h5>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="upcoming-block">
-                        <div class="upcoming-img block-effect">
-                            <a href="#"><img src="images/event/event-dtl-upcoming-01.jpg" class="img-responsive" alt="upcoming-img-01"></a>
-                        </div>
-                        <div class="upcoming-content">
-                            <a href="#"><h4 class="upcoming-heading">Lorem ipsum dolor sitmet.</h4></a>
-                            <p class="upcoming-dtl">Aliquam laoreet orci quis risus vulputate tempor. Quisque aliquet ipsum at mattis</p>
-                            <a class="read-more" href="#">Read More<i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <div class="upcoming-block">
-                        <div class="upcoming-img block-effect">
-                            <a href="#"><img src="images/event/event-dtl-upcoming-02.jpg" class="img-responsive" alt="upcoming-img-02"></a>
-                        </div>
-                        <div class="upcoming-content">
-                            <a href="#"><h4 class="upcoming-heading">Lorem ipsum dolor sitmet.</h4></a>
-                            <p class="upcoming-dtl">Aliquam laoreet orci quis risus vulputate tempor. Quisque aliquet ipsum at mattis</p>
-                            <a class="read-more" href="#">Read More<i class="fa fa-long-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end upcoming -->
+        <!--// Main Section \\-->
+
+    </div>
+    <!--// Main Content \\-->
 
 @stop

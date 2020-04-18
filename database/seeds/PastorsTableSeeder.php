@@ -16,7 +16,7 @@ class PastorsTableSeeder extends Seeder
         //
         DB::table('pastors')->truncate();
         $faker = Factory::create();
-        $image = "pastor-" . rand(1,7) . ".jpg";
+        $image = "team-grid-img" . rand(1,8) . ".jpg";
         DB::table('pastors')->insert([
             [
                 'name' => 'Vinton Fenson',

@@ -39,6 +39,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function gravatar()
+    {
+        $email = $this->email;
+        $default = asset("images/holder/profile.jpg");
+        $size = 40;
+
+        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+    }
+
     public function sermons()
     {
         return $this->hasMany('App\Sermon');

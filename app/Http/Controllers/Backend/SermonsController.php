@@ -93,23 +93,23 @@ class SermonsController extends BackendController
     {
         $data = $request->all();
 
-        if ($request->hasFile('image','audio'))
+        if ($request->hasFile('image'))
         {
             $sermonImage       = $request->file('image');
-            $sermonAudio       = $request->file('audio');
-
             $imageFileName    = $sermonImage->getClientOriginalName();
-
-            $audioFileName    = $sermonAudio->getClientOriginalName();
-
             $imageDestination = $this->imageUploadPath;
-            $audioDestination = $this->audioUploadPath;
-
             $sermonImage->move($imageDestination, $imageFileName);
-            $sermonAudio->move($audioDestination, $audioFileName);
-
             $data['image'] = $imageFileName;
+
+        }
+
+        if ($request->hasFile('audio')){
+            $sermonAudio       = $request->file('audio');
+            $audioFileName    = $sermonAudio->getClientOriginalName();
+            $audioDestination = $this->audioUploadPath;
+            $sermonAudio->move($audioDestination, $audioFileName);
             $data['audio'] = $audioFileName;
+
         }
 
         return $data;

@@ -20,7 +20,9 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.1",
-        "santigarcor/laratrust": "5.2.*"
+        "santigarcor/laratrust": "5.2.*",
+        "spatie/laravel-searchable": "^1.6",
+        "thomaswelton/laravel-gravatar": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

@@ -5,8 +5,10 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Post extends Model
+class Post extends Model implements Searchable
 {
     //
     use SoftDeletes;
@@ -49,6 +51,10 @@ class Post extends Model
         return $this->created_at->format($format);
     }
 
+    public function scopeTime()
+    {
+        return $this->created_at;
+    }
 
     public function scopeLatestFirst($query)
     {
@@ -81,5 +87,17 @@ class Post extends Model
         else{
             return '<span class="label label-success">Published</span>';
         }
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        // TODO: Implement getSearchResult() method.
+        $url = route('post.show', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
     }
 }

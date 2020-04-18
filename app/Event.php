@@ -3,8 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 
-class Event extends Model
+class Event extends Model implements Searchable
 {
     //
     protected $fillable = [
@@ -20,7 +22,7 @@ class Event extends Model
         return $this->belongsTo('App\Event');
     }
 
-    public function getEventImageUrlAttribute()
+    public function getImageUrlAttribute()
     {
         $eventImage = "";
         if (! is_null($this->eventImage)){
@@ -29,5 +31,17 @@ class Event extends Model
         }
 
         return $eventImage;
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+        // TODO: Implement getSearchResult() method.
+        $url = route('event.show', $this->id);
+
+        return new SearchResult(
+            $this,
+            $this->title,
+            $url
+        );
     }
 }

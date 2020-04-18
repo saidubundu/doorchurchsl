@@ -15,7 +15,7 @@ class PastorController extends Controller
     public function index()
     {
         //
-        $pastors = Pastor::all();
+        $pastors = Pastor::latest()->paginate(8);
         return view('frontend.pastor.index',compact('pastors'));
     }
 
