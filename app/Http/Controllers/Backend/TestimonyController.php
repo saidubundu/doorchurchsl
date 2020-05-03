@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TestimonyRequest;
+use App\Testimony;
 use Illuminate\Http\Request;
 
-class TestimonyController extends Controller
+class TestimonyController extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +17,8 @@ class TestimonyController extends Controller
     public function index()
     {
         //
+        $testimonies = Testimony::paginate(5);
+        return view('backend.testimony.index', compact('testimonies'));
     }
 
     /**
@@ -22,9 +26,10 @@ class TestimonyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Testimony $testimony)
     {
         //
+        return view('backend.testimony.create', compact('testimony'));
     }
 
     /**
@@ -33,9 +38,13 @@ class TestimonyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TestimonyRequest $request)
     {
         //
+        $input = $request->all();
+        Testimony::create($input);
+
+        return redirect('backend/testimonys')->with('message', 'Script added');
     }
 
     /**
@@ -58,6 +67,8 @@ class TestimonyController extends Controller
     public function edit($id)
     {
         //
+        $testimony = Testimony::findOrFail($id);
+        return view('backend.testimony.edit', compact('testimony'));
     }
 
     /**
@@ -67,9 +78,14 @@ class TestimonyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TestimonyRequest $request, $id)
     {
         //
+        $testimony = Testimony::findOrFail($id);
+        $input = $request->all();
+        $testimony->update($input);
+
+        return redirect('backend/testimonys')->with('message', 'Script added');
     }
 
     /**
@@ -81,5 +97,7 @@ class TestimonyController extends Controller
     public function destroy($id)
     {
         //
+        Testimony::findOrFail($id)->delete();
+        return redirect('backend/testimonys')->with('message', 'Script deleted');
     }
 }

@@ -15,6 +15,7 @@ class AddSlugToCauses extends Migration
     {
         Schema::table('causes', function (Blueprint $table) {
             //
+            $table->string('slug');
         });
     }
 
@@ -27,6 +28,7 @@ class AddSlugToCauses extends Migration
     {
         Schema::table('causes', function (Blueprint $table) {
             //
+            $table->dropColumn('slug');
         });
     }
 }

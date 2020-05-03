@@ -20,10 +20,16 @@ Route::resource('/event', 'EventController');
 Route::resource('/sermon', 'SermonController');
 Route::resource('/post', 'PostController');
 Route::resource('/gallery', 'GalleryController');
+Route::resource('/cause', 'CausesController');
 Route::resource('/pastor', 'PastorController');
 Route::get('/about', [
     'uses' => 'FrontendController@about',
     'as' => 'about'
+]);
+
+Route::get('/online', [
+    'uses' => 'FrontendController@online',
+    'as' => 'online'
 ]);
 
 Route::get('/search-result', [
@@ -34,6 +40,11 @@ Route::get('/search-result', [
 Route::get('/search', [
     'uses' => 'SearchController@index',
     'as' => 'search'
+]);
+
+Route::post('/post/{post}/comments', [
+    'uses' => 'CommentsController@store',
+    'as' => 'post.comments'
 ]);
 
 // // /// /// //// /// / / / / // / / /
@@ -102,3 +113,7 @@ Route::get('backend/users/confirm/{users}',[
     'uses' => 'Backend\UsersController@confirm',
     'as' => 'users.confirm'
 ]);
+
+Route::resource('backend/live', 'Backend\StreamsController');
+Route::resource('backend/testimonys', 'Backend\TestimonyController');
+Route::resource('backend/causes', 'Backend\CausesController');

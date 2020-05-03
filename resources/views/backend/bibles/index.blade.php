@@ -19,6 +19,25 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
+                        @if($bibles->isEmpty())
+                            <div class="box-header with-border">
+                                <h3 class="box-title">No Bible Verse Found in the Database</h3>
+                            </div>
+                            <div class="box-body">
+                                Start Adding Amazing Contents To The Website !
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <h4>Get Started</h4>
+
+                                <p>
+                                    <a href="{{route('bible.create')}}" class="btn btn-primary">
+                                        Add Bible Verse
+                                    </a>
+                                </p>
+                            </div>
+
+                        @else
                         <div class="box-header">
                             <h3 class="box-title">Bible</h3>
 
@@ -46,8 +65,9 @@
                                 <small>{{$bibleCount}} {{str_plural('Scripture', $bibleCount)}}</small>
                             </div>
                         </div>
-
+                        @endif
                     </div>
+
                     <!-- /.box -->
                 </div>
             </div>

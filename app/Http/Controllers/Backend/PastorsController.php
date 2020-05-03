@@ -26,7 +26,7 @@ class PastorsController extends BackendController
     public function index()
     {
         //
-        $pastors = Pastor::latest()->paginate(5);
+        $pastors = Pastor::latest()->simplePaginate(5);
         return view('backend.pastors.index', compact('pastors'));
     }
 
@@ -86,13 +86,13 @@ class PastorsController extends BackendController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         //
-        $pastor = Pastor::findOrFail($id);
+        $pastor = Pastor::findBySlugOrFail($slug);
         return view('backend.pastors.edit', compact('pastor'));
     }
 

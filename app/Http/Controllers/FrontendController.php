@@ -7,6 +7,8 @@ use App\Event;
 use App\Photo;
 use App\Post;
 use App\Sermon;
+use App\Stream;
+use App\Testimony;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -28,7 +30,9 @@ class FrontendController extends Controller
         $sermons = Sermon::latest()->paginate(4);
         $photos = Photo::latest()->paginate(8);
         $posts = Post::published()->latest()->paginate(4);
-        return view('frontend.index', compact('events','bibles', 'sermons','photos','posts'));
+        $galleries = Photo::take(8)->get();
+        $testimonies = Testimony::take(3)->get();
+        return view('frontend.index', compact('events','bibles', 'sermons','photos','posts','galleries', 'testimonies'));
     }
 
     public function about()
@@ -39,6 +43,13 @@ class FrontendController extends Controller
     public function search()
     {
         return view('frontend.search');
+    }
+
+    public function online()
+    {
+        $streams = Stream::latest()->take(4)->get();
+        $newStream = $streams->shift();
+        return view('frontend.online', compact('streams', 'newStream'));
     }
 
     /**

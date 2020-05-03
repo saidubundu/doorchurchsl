@@ -17,7 +17,7 @@ class BibleController extends BackendController
     public function index()
     {
         //
-        $bibles = Bible::paginate(5);
+        $bibles = Bible::simplePaginate(5);
         return view('backend.bibles.index', compact('bibles'));
     }
 

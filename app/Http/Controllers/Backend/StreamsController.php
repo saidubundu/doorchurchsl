@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StreamRequest;
+use App\Stream;
 use Illuminate\Http\Request;
 
-class StreamsController extends Controller
+class StreamsController extends BackendController
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +17,8 @@ class StreamsController extends Controller
     public function index()
     {
         //
+        $streams = Stream::latest()->simplePaginate(5);
+        return view('backend.live.index', compact('streams'));
     }
 
     /**
@@ -22,9 +26,10 @@ class StreamsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Stream $stream)
     {
         //
+        return view('backend.live.create', compact('stream'));
     }
 
     /**
@@ -33,9 +38,13 @@ class StreamsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StreamRequest $request)
     {
         //
+        $input = $request->all();
+        Stream::create($input);
+
+        return redirect('backend/live')->with('message', 'Script added');
     }
 
     /**
@@ -58,6 +67,8 @@ class StreamsController extends Controller
     public function edit($id)
     {
         //
+        $stream = Stream::findOrFail($id);
+        return view('backend.live.edit', compact('stream'));
     }
 
     /**
@@ -67,9 +78,14 @@ class StreamsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StreamRequest $request, $id)
     {
         //
+        $stream = Stream::findOrFail($id);
+        $input = $request->all();
+        $stream->update($input);
+
+        return redirect('backend/live')->with('message', 'Script added');
     }
 
     /**
@@ -81,5 +97,7 @@ class StreamsController extends Controller
     public function destroy($id)
     {
         //
+        Stream::findOrFail($id)->delete();
+        return redirect('backend/live')->with('message', 'Script deleted');
     }
 }

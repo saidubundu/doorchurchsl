@@ -17,7 +17,7 @@ class PostController extends Controller
     {
 //                $time = $posts->created_at;
 ////                $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->month;
-        $posts = Post::latestFirst()->published()->paginate(6);
+        $posts = Post::with('comments')->latestFirst()->published()->paginate(6);
         return view('frontend.post.index', compact('posts'));
     }
 
@@ -45,13 +45,15 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
-        $post = Post::findOrFail($id);
+
+        $post = Post::findBySlugOrFail($slug);
+        $post->increment('view_count');
         return view('frontend.post.show',compact('post'));
     }
 

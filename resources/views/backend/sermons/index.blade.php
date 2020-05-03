@@ -19,6 +19,25 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
+                        @if($sermons->isEmpty())
+                            <div class="box-header with-border">
+                                <h3 class="box-title">No Sermons Found in the Database</h3>
+                            </div>
+                            <div class="box-body">
+                                Start Adding Amazing Contents To The Website !
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <h4>Get Started</h4>
+
+                                <p>
+                                    <a href="{{route('sermons.create')}}" class="btn btn-primary">
+                                        Add new Sermon
+                                    </a>
+                                </p>
+                            </div>
+
+                         @else
                         <div class="box-header">
                             <h3 class="box-title">Sermons</h3>
 
@@ -57,7 +76,7 @@
                                 <small>{{$sermonCount}} {{str_plural('Sermon', $sermonCount)}}</small>
                             </div>
                         </div>
-
+                    @endif
                     </div>
                     <!-- /.box -->
                 </div>

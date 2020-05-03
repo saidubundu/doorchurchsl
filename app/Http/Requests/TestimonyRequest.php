@@ -13,7 +13,7 @@ class TestimonyRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class TestimonyRequest extends FormRequest
     {
         return [
             //
+            'script' => 'required|max:300',
+            'name' => 'required',
         ];
     }
 }

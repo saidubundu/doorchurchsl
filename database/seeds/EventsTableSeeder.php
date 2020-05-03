@@ -29,6 +29,7 @@ class EventsTableSeeder extends Seeder
                 'eventImage' => $image,
                 'date' => $date,
                 'location' => '23 Kissy Road',
+                'view_count' => rand(1,10) *10
             ];
         }
 

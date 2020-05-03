@@ -6,11 +6,11 @@
             <th>Verse</th>
 
         </tr>
-        @foreach($bibles as $bible)
+        @foreach($streams as $stream)
             <tr>
                 <td>
-                    {!! Form::open(['style' => 'display:inline-block','method' => 'DELETE', 'route' => ['bible.destroy', $bible->id]]) !!}
-                    <a title="Edit" class="btn btn-xs btn-default eit-row" href="{{route('bible.edit',$bible->id)}}">
+                    {!! Form::open(['style' => 'display:inline-block','method' => 'DELETE', 'route' => ['live.destroy', $stream->id]]) !!}
+                    <a title="Edit" class="btn btn-xs btn-default eit-row" href="{{route('live.edit',$stream->id)}}">
                         <i class="fa fa-edit"></i>
                     </a>
 
@@ -20,18 +20,10 @@
 
 
                     {!! Form::close() !!}
-                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('bible.show',$bible->id)}}">
-                        <i class="fa fa-eye"></i>
-                    </a>
                 </td>
 
-                <td>{{str_limit($bible->script, 40)}}</td>
-                <td>{{$bible->verse}}</td>
-{{--                <td>{{$bible->address}}</td>--}}
-{{--                <td>{{$bible->phone}}</td>--}}
-{{--                <td>{{$bible->email}}</td>--}}
-{{--                <td><abbr title="{{ $pastor->dateFormatted(true) }}">{{$pastor->dateFormatted()}}</abbr> | {!! $pastor->publicationLabel() !!}</td>--}}
-
+                <td>{{$stream->title}}</td>
+                <td>{{$stream->link}}</td>
             </tr>
         @endforeach
 

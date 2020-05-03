@@ -60,6 +60,7 @@
                                 <ul class="row">
                                     @foreach($searchResults->groupByType() as $type => $modelSearchResults)
                                         <h2><strong>{{ ucwords($type) }}</strong></h2>
+                                    <hr/>
                                     @foreach($modelSearchResults as $searchResult)
                                     <li class="col-md-12">
                                         <figure><img src="{{$searchResult->searchable->image_url ? $searchResult->searchable->image_url : '/images/holder/posts.png'}}" alt=""></figure>
@@ -84,88 +85,22 @@
                     <aside class="col-md-3">
 
                         <!--// Widget Search \\-->
-                        <div class="widget widget_search">
-                            <form action="{{route('search.result')}}">
-                                <input type="text" name="query" value="{{isset($searchTerm) ? $searchTerm : ''}}" onblur="if(this.value == '') { this.value ='Type here'; }" onfocus="if(this.value =='Type here') { this.value = ''; }" tabindex="0" type="text">
-                                <label><input type="submit" value=""></label>
-                            </form>
-                        </div>
+                        @include('frontend.includes.searchForm')
                         <!--// Widget Search \\-->
+                    <!--// Widget Cetagories \\-->
 
                         <!--// Widget Popular News \\-->
-                        <div class="widget widget_popular_news">
-                            <h2 class="church-widget-heading">[ Popular News ]</h2>
-                            <ul>
-                                <li>
-                                    <figure><a href="blog-detail.html"><img src="extra-images/popular-post-img1.jpg" alt=""></a></figure>
-                                    <div class="widget-popular-news-text">
-                                        <h6><a href="blog-detail.html">Sed vulputate elem ntum aliquam.</a></h6>
-                                        <time datetime="2008-02-14 20:00"><i class="icon church-calendar-icon"></i> 21 Aug 2017</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="blog-detail.html"><img src="extra-images/popular-post-img2.jpg" alt=""></a></figure>
-                                    <div class="widget-popular-news-text">
-                                        <h6><a href="blog-detail.html">Sed vulputate elem ntum aliquam.</a></h6>
-                                        <time datetime="2008-02-14 20:00"><i class="icon church-calendar-icon"></i> 21 Aug 2017</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="blog-detail.html"><img src="extra-images/popular-post-img3.jpg" alt=""></a></figure>
-                                    <div class="widget-popular-news-text">
-                                        <h6><a href="blog-detail.html">Sed vulputate elem ntum aliquam.</a></h6>
-                                        <time datetime="2008-02-14 20:00"><i class="icon church-calendar-icon"></i> 21 Aug 2017</time>
-                                    </div>
-                                </li>
-                                <li>
-                                    <figure><a href="blog-detail.html"><img src="extra-images/popular-post-img4.jpg" alt=""></a></figure>
-                                    <div class="widget-popular-news-text">
-                                        <h6><a href="blog-detail.html">Sed vulputate elem ntum aliquam.</a></h6>
-                                        <time datetime="2008-02-14 20:00"><i class="icon church-calendar-icon"></i> 21 Aug 2017</time>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--// Widget Popular News \\-->
+                    @include('frontend.includes.popularPost')
+                    <!--// Widget Popular News \\-->
+                    <!--// Widget Upcoming Events \\-->
 
                         <!--// Widget Caendar \\-->
-                        <div class="widget widget_calendar">
-                            <h2 class="church-widget-heading">[ Calendar Archives ]</h2>
-                            <table>
-                                <caption> January 2018 </caption>
-                                <thead>
-                                <tr>
-                                    <th title="Monday">M</th>
-                                    <th title="Tuesday">T</th>
-                                    <th title="Wednesday">W</th>
-                                    <th title="Thursday">T</th>
-                                    <th title="Friday">F</th>
-                                    <th title="Saturday">S</th>
-                                    <th title="Sunday">S</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td colspan="5"></td><td id="today">1</td><td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
-                                </tr>
-                                <tr>
-                                    <td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
-                                </tr>
-                                <tr>
-                                    <td>17</td><td>18</td><td>19</td><td>20</td><td class="active">21</td><td>22</td><td>23</td>
-                                </tr>
-                                <tr>
-                                    <td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
-                                </tr>
-                                <tr>
-                                    <td>31</td><td colspan="6"></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    @include('frontend.includes.archive')
+                    <!--// Widget Caendar \\-->
+
+                        <!--// Widget Gallery \\-->
+
+                        <!--// Widget Gallery \\-->
                         <!--// Widget Caendar \\-->
 
                     </aside>

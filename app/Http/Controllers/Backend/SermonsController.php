@@ -27,23 +27,23 @@ class SermonsController extends BackendController
         //
         $onlyTrashed = FALSE;
         if (($status = $request->get("status")) && $status == 'trash') {
-            $sermons = Sermon::onlyTrashed()->latest()->paginate(5);
+            $sermons = Sermon::onlyTrashed()->latest()->simplePaginate(5);
             $onlyTrashed = TRUE;
         }
         elseif ($status == 'published') {
-            $sermons = Sermon::published()->latest()->paginate(5);
+            $sermons = Sermon::published()->latest()->simplePaginate(5);
         }
         elseif ($status == 'scheduled') {
-            $sermons = Sermon::scheduled()->latest()->paginate(5);
+            $sermons = Sermon::scheduled()->latest()->simplePaginate(5);
         }
         elseif ($status == 'draft') {
-            $sermons = Sermon::draft()->latest()->paginate(5);
+            $sermons = Sermon::draft()->latest()->simplePaginate(5);
         }
         elseif ($status == 'own') {
-            $sermons = $request->user()->sermons()->latest()->paginate(5);
+            $sermons = $request->user()->sermons()->latest()->simplePaginate(5);
         }
         else {
-            $sermons = Sermon::latest()->paginate(5);
+            $sermons = Sermon::latest()->simplePaginate(5);
         }
         $statusList = $this->statusList($request);
 

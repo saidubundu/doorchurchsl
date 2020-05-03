@@ -4,16 +4,16 @@
             <div class="col-md-12">
                 <div class="church-fancy-title">
                     <h2>[Church Gallery]</h2>
-                    <span>Check out our latest photos & videos.</span>
+                    <span>Check out our latest photos .</span>
                 </div>
                 <div class="church-gallery grid church-masonry-gallery">
                     <ul class="row">
-                        @foreach($photos as $photo)
+                        @foreach($galleries as $photo)
                         <li class="col-md-3 grid-item">
-                            <figure><a data-fancybox-group="group" href="{{$photo->photo_url}}" class="fancybox"><img src="{{$photo->photo_url}}" alt=""></a>
+                            <figure><a data-fancybox-group="group" href="{{$photo->image_url}}" class="fancybox"><img src="{{$photo->image_url}}" alt=""></a>
                                 <figcaption>
                                     <ul class="church-gallery-option">
-                                        <li><a data-fancybox-group="group" href="{{$photo->photo_url}}" class="fancybox"><i class="icon church-search2"></i></a></li>
+                                        <li><a data-fancybox-group="group" href="{{$photo->image_url}}" class="fancybox"><i class="icon church-search2"></i></a></li>
                                         <li><a href="404.html"><i class="icon church-arrows5"></i></a></li>
                                     </ul>
                                 </figcaption>

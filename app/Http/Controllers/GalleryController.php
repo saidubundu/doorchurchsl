@@ -16,9 +16,8 @@ class GalleryController extends Controller
     public function index()
     {
         //
-        $photos = Photo::all();
-        $videos = Video::paginate(2);
-        return view('frontend.gallery.index', compact('photos', 'videos'));
+        $photos = Photo::latest()->paginate(9);
+        return view('frontend.gallery.index', compact('photos'));
     }
 
     /**

@@ -15,7 +15,17 @@ class CreateCausesTable extends Migration
     {
         Schema::create('causes', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('excerpt');
+            $table->text('body');
+            $table->string('image');
+            $table->string('goal');
+            $table->string('initial');
+            $table->string('orange')->nullable();
+            $table->string('africell')->nullable();
+            $table->string('account')->nullable();
             $table->timestamps();
+
         });
     }
 

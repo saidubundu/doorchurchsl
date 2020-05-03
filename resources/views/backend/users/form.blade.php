@@ -30,6 +30,16 @@
                     </div>
 
                     <br>
+                    <div class="from-group excerpt  {{ $errors->has('bio') ? 'has-error' : '' }}">
+                        {!! Form::label('bio') !!}
+                        {!! Form::textarea('bio', null, ['class'=>'form-control', 'id'=>'bio']) !!}
+
+                        @if($errors->has('bio'))
+                            <span class="help-block">{{$errors->first('bio')}}</span>
+                        @endif
+                    </div>
+
+                    <br>
                     <div class="from-group excerpt  {{ $errors->has('role') ? 'has-error' : '' }}">
                         {!! Form::label('role') !!}
                         @if($user->exists && $user->id == config('cms.default_user_id'))

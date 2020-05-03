@@ -5,20 +5,20 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Bible
+                Testimony
                 <small>Edit script</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#"> Bible</a></li>
-                <li class="active">Edit script</li>
+                <li><a href="#"> Testimony</a></li>
+                <li class="active">Edit testimony</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-        {!! Form::model($stream, ['method' => 'PUT', 'route' => ['live.update',$stream->id], 'files'=> TRUE, 'id'=>'post-form']) !!}
-        @include('backend.live.form')
+        {!! Form::model($testimony, ['method' => 'PUT', 'route' => ['testimonys.update',$testimony->id], 'files'=> TRUE, 'id'=>'post-form']) !!}
+        @include('backend.testimony.form')
         {!! Form::close() !!}
         <!-- /.row -->
         </section>

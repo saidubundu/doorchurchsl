@@ -47,13 +47,13 @@
         <div class="church-main-section church-authorfull">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-5"><figure class="church-author-thumb"><img src="extra-images/author-thumb-img.jpg" alt=""></figure></div>
+                    <div class="col-md-5"><figure class="church-author-thumb"><img src="{{asset('images/pastor.png')}}" alt=""></figure></div>
                     <div class="col-md-7">
                         <div class="church-author-text">
                             <h6>Welcome to The Door Church</h6>
                             <img src="images/title-img2.png" alt="">
                             <p>Our mission is to <strong>reach and influence</strong> the world by building a big & large Christ centered, Bible-based church, changing mindsets.</p>
-                            <span>- Father Brandon, The Door Church</span>
+                            <span>- Edward Saffa, The Door Church</span>
                             <a href="{{route('pastor.index')}}" class="church-btn">Meet Our Pastors</a>
                         </div>
                     </div>
@@ -121,10 +121,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <a href="404.html" class="church-simple-btn">Saturday 1:00pm</a>
-                            <a href="404.html" class="church-simple-btn">Saturday 3:15pm</a>
-                            <a href="404.html" class="church-simple-btn">Sunday 2:00pm</a>
-                            <a href="404.html" class="church-simple-btn">Sunday 4:45pm</a>
+                            <a  class="church-simple-btn">Sunday 10:00am</a>
+                            <a  class="church-simple-btn">Tuesday 7:00pm</a>
+                            <a  class="church-simple-btn">Wednesday 7:00pm</a>
+{{--                            <a href="404.html" class="church-simple-btn">Sunday 4:45pm</a>--}}
                         </div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->
-        @include('frontend.includes.bible_verse')
+        @include('frontend.includes.testimonies')
         <!--// Main Section \\-->
 
         <!--// Main Section \\-->

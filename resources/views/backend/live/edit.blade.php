@@ -17,8 +17,8 @@
 
         <!-- Main content -->
         <section class="content">
-        {!! Form::model($bible, ['method' => 'PUT', 'route' => ['bible.update',$bible->id], 'files'=> TRUE, 'id'=>'post-form']) !!}
-        @include('backend.bibles.form')
+        {!! Form::model($stream, ['method' => 'PUT', 'route' => ['live.update',$stream->id], 'files'=> TRUE, 'id'=>'post-form']) !!}
+        @include('backend.live.form')
         {!! Form::close() !!}
         <!-- /.row -->
         </section>

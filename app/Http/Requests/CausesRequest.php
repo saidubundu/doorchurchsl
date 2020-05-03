@@ -13,7 +13,7 @@ class CausesRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,11 @@ class CausesRequest extends FormRequest
     {
         return [
             //
+            'title' => 'required|max:225',
+            'excerpt' => 'required',
+            'body' => 'required',
+            'initial' => 'required',
+            'goal' => 'required'
         ];
     }
 }

@@ -66,16 +66,26 @@ class PermissionsTableSeeder extends Seeder
         $crudGallery->name = "crud-gallery";
         $crudGallery->save();
 
+        //crud testimony
+        $crudTestimony = new Permission();
+        $crudTestimony->name = "crud-testimony";
+        $crudTestimony->save();
+
+        //crud livestream
+        $crudStream = new Permission();
+        $crudStream->name = "crud-liveStream";
+        $crudStream->save();
+
         //attach role permission
         $admin =  Role::whereName('admin')->first();
         $editor = Role::whereName('editor')->first();
         $author = Role::whereName('author')->first();
 
-        $admin->detachPermissions([$crudUser, $crudPastor, $crudCause ,$crudEvent, $crudSermon, $crudPost, $updateOthersPost, $deleteOthersPost, $crudBible, $crudGallery]);
-        $admin->attachPermissions([$crudUser, $crudPastor, $crudCause ,$crudEvent, $crudSermon, $crudPost, $updateOthersPost, $deleteOthersPost, $crudBible, $crudGallery]);
+        $admin->detachPermissions([$crudUser, $crudPastor, $crudCause , $crudStream, $crudEvent, $crudSermon, $crudPost, $updateOthersPost, $deleteOthersPost, $crudBible, $crudGallery, $crudTestimony]);
+        $admin->attachPermissions([$crudUser, $crudPastor, $crudCause , $crudStream, $crudEvent, $crudSermon, $crudPost, $updateOthersPost, $deleteOthersPost, $crudBible, $crudGallery, $crudTestimony]);
 
-        $editor->detachPermissions([ $crudCause, $crudEvent, $crudPost, $updateOthersPost, $deleteOthersPost, $crudBible, $crudGallery]);
-        $editor->attachPermissions([ $crudCause, $crudEvent, $crudPost, $updateOthersPost, $deleteOthersPost, $crudBible, $crudGallery]);
+        $editor->detachPermissions([ $crudCause, $crudEvent, $crudPost, $updateOthersPost, $deleteOthersPost, $crudBible, $crudGallery, $crudTestimony]);
+        $editor->attachPermissions([ $crudCause, $crudEvent, $crudPost, $updateOthersPost, $deleteOthersPost, $crudBible, $crudGallery, $crudTestimony]);
 
         $author->detachPermissions([$crudPost, $crudBible, $crudGallery]);
         $author->attachPermissions([$crudPost, $crudBible, $crudGallery]);

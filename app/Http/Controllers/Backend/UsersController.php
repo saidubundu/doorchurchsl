@@ -20,7 +20,7 @@ class UsersController extends BackendController
     public function index()
     {
         //
-        $users = User::orderBy('name')->paginate(5);
+        $users = User::orderBy('name')->simplePaginate(5);
         $usersCount = User::count();
        return view('backend.users.index', compact('users','usersCount'));
     }

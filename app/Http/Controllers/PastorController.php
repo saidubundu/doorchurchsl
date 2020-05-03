@@ -43,13 +43,13 @@ class PastorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
-        $pastor = Pastor::findOrFail($id);
+        $pastor = Pastor::findBySlugOrFail($slug);
         return view('frontend.pastor.show', compact('pastor'));
     }
 

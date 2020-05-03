@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Cause;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CausesRequest;
 use Illuminate\Http\Request;
 
-class CausesController extends Controller
+class CausesController extends BackendController
 {
+    protected $uploadPath;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->uploadPath = public_path('images/causes');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +24,8 @@ class CausesController extends Controller
     public function index()
     {
         //
+        $causes = Cause::latest()->simplePaginate(5);
+        return view('backend.causes.index',compact('causes'));
     }
 
     /**
@@ -22,9 +33,10 @@ class CausesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Cause $cause)
     {
         //
+        return view('backend.causes.create', compact('cause'));
     }
 
     /**
@@ -33,9 +45,29 @@ class CausesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CausesRequest $request)
     {
         //
+        $data = $this->handleRequest($request);
+        Cause::create($data);
+        return redirect('backend/causes')->with('message', 'Causes Added');
+    }
+
+    private function handleRequest($request)
+    {
+        $data = $request->all();
+
+        if ($request->hasFile('image')){
+            $image = $request->file('image');
+            $fileName = $image->getClientOriginalName();
+            $destination = $this->uploadPath;
+
+            $image->move($destination, $fileName);
+
+            $data['image'] = $fileName;
+        }
+
+        return $data;
     }
 
     /**
@@ -58,6 +90,8 @@ class CausesController extends Controller
     public function edit($id)
     {
         //
+        $cause = Cause::findOrFail($id);
+        return view('backend.causes.edit',compact('cause'));
     }
 
     /**
@@ -67,10 +101,22 @@ class CausesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CausesRequest $request, $id)
     {
         //
+        $cause = Cause::findOrFail($id);
+        $oldImage = $cause->image;
+        $data = $this->handleRequest($request);
+        $cause->update($data);
+
+        if ($oldImage !== $cause->image){
+            $this->removeImage($oldImage);
+        }
+
+        return redirect('backend/causes')->with('message', 'Cause Updated');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -81,5 +127,14 @@ class CausesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function removeImage($image)
+    {
+        if (!empty($image)){
+            $imagePath = $this->uploadPath . '/' . $image;
+
+            if (file_exists($imagePath)) unlink($imagePath);
+        }
     }
 }

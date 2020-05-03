@@ -19,18 +19,29 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
+                        @if($events->isEmpty())
+                            <div class="box-header with-border">
+                                <h3 class="box-title">No Events Found in the Database</h3>
+                            </div>
+                            <div class="box-body">
+                                Start Adding Amazing Contents To The Website !
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <h4>Get Started</h4>
+
+                                <p>
+                                    <a href="{{route('events.create')}}" class="btn btn-primary">
+                                        Add Event
+                                    </a>
+                                </p>
+                            </div>
+
+                        @else
                         <div class="box-header">
                             <h3 class="box-title">Event</h3>
 
                             <div class="box-tools">
-{{--                                <?php $links = [] ?>--}}
-{{--                                @foreach($statusList as $key => $value)--}}
-{{--                                    @if($value)--}}
-{{--                                        <?php $selected = Request::get('status') == $key ? 'selected-status' : '' ?>--}}
-{{--                                        <?php $links[] = "<a class=\"{$selected}\" href=\"?status={$key}\">" . ucwords($key) . "({$value})</a>" ?>--}}
-{{--                                    @endif--}}
-{{--                                @endforeach--}}
-{{--                                {!! implode(' | ', $links) !!}--}}
                             </div>
                         </div>
 
@@ -56,7 +67,7 @@
                                 <small>{{$eventCount}} {{str_plural('Event', $eventCount)}}</small>
                             </div>
                         </div>
-
+                    @endif
                     </div>
                     <!-- /.box -->
                 </div>

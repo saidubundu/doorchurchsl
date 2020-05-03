@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Searchable\Searchable;
@@ -13,23 +14,46 @@ use Spatie\Searchable\SearchResult;
 class Sermon extends Model implements Searchable
 {
     //
+    use Sluggable;
+    use SluggableScopeHelpers;
     use SoftDeletes;
-//    use Sluggable;
-//
-//    public function sluggable()
-//    {
-//        return [
-//            'slug' => [
-//                'source' => 'title'
-//            ]
-//        ];
-//    }
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title',
+                'onUpdate' => true,
+            ]
+        ];
+    }
 
     protected $fillable = [
         'title','excerpt','body','image','audio','view_count','published_at'
     ];
 
     protected $dates = ['published_at'];
+
+    public function scopeDate()
+    {
+        $time = $this->published_at;
+        $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->day;
+        return $year;
+    }
+
+    public function scopeMonth()
+    {
+        $time = $this->published_at;
+        $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->shortMonthName;
+        return $year;
+    }
+
+    public function scopeyear()
+    {
+        $time = $this->published_at;
+        $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
+        return $year;
+    }
 
     public function setPublishedAtAttribute($value)
     {
@@ -39,6 +63,11 @@ class Sermon extends Model implements Searchable
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function scopePopular($query)
+    {
+        return $query->orderBy('view_count' , 'desc');
     }
 
     public function dateFormatted($showTimes = false)

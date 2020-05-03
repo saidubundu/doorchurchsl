@@ -22,6 +22,11 @@ class CreatePastorsTable extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('email');
+            $table->string('branch');
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('whatsapp')->nullable();
+            $table->string('instagram')->nullable();
             $table->timestamps();
         });
     }

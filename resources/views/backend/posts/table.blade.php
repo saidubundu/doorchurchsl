@@ -34,7 +34,7 @@
 
 
                     {!! Form::close() !!}
-                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('post.show',$post->id)}}">
+                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('post.show',$post->slug)}}">
                         <i class="fa fa-eye"></i>
                     </a>
                 </td>

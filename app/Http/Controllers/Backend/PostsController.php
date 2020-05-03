@@ -27,23 +27,23 @@ class PostsController extends BackendController
         //
         $onlyTrashed = FALSE;
         if (($status = $request->get("status")) && $status == 'trash') {
-            $posts = Post::onlyTrashed()->latest()->paginate(5);
+            $posts = Post::onlyTrashed()->latest()->simplePaginate(5);
             $onlyTrashed = TRUE;
         }
         elseif ($status == 'published') {
-            $posts = Post::published()->latest()->paginate(5);
+            $posts = Post::published()->latest()->simplePaginate(5);
         }
         elseif ($status == 'scheduled') {
-            $posts = Post::scheduled()->latest()->paginate(5);
+            $posts = Post::scheduled()->latest()->simplePaginate(5);
         }
         elseif ($status == 'draft') {
-            $posts = Post::draft()->latest()->paginate(5);
+            $posts = Post::draft()->latest()->simplePaginate(5);
         }
         elseif ($status == 'own') {
-            $posts = $request->user()->sermons()->latest()->paginate(5);
+            $posts = $request->user()->sermons()->latest()->simplePaginate(5);
         }
         else {
-            $posts = Post::latest()->paginate(5);
+            $posts = Post::latest()->simplePaginate(5);
         }
         $statusList = $this->statusList($request);
 

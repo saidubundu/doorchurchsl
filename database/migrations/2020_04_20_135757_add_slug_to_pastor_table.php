@@ -15,6 +15,7 @@ class AddSlugToPastorTable extends Migration
     {
         Schema::table('pastors', function (Blueprint $table) {
             //
+            $table->string('slug')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddSlugToPastorTable extends Migration
     {
         Schema::table('pastors', function (Blueprint $table) {
             //
+            $table->dropColumn('slug');
         });
     }
 }

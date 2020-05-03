@@ -13,7 +13,7 @@
             <tr>
                 <td>
                     {!! Form::open(['style' => 'display:inline-block','method' => 'DELETE', 'route' => ['pastors.destroy', $pastor->id]]) !!}
-                    <a title="Edit" class="btn btn-xs btn-default eit-row" href="{{route('pastors.edit',$pastor->id)}}">
+                    <a title="Edit" class="btn btn-xs btn-default eit-row" href="{{route('pastors.edit',$pastor->slug)}}">
                         <i class="fa fa-edit"></i>
                     </a>
 
@@ -23,7 +23,7 @@
 
 
                     {!! Form::close() !!}
-                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('pastor.show',$pastor->id)}}">
+                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('pastor.show',$pastor->slug)}}">
                         <i class="fa fa-eye"></i>
                     </a>
                 </td>

@@ -15,6 +15,7 @@ class AddSlugToSermons extends Migration
     {
         Schema::table('sermons', function (Blueprint $table) {
             //
+            $table->string('slug')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddSlugToSermons extends Migration
     {
         Schema::table('sermons', function (Blueprint $table) {
             //
+            $table->dropColumn('slug');
         });
     }
 }

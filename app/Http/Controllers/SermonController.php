@@ -43,13 +43,15 @@ class SermonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
-        $sermon = Sermon::published()->findOrFail($id);
+        $sermon = Sermon::findBySlug($slug);
+        $sermon->increment('view_count');
+        $sermon->published();
         return view('frontend.sermon.show', compact('sermon'));
     }
 

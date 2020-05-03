@@ -9,7 +9,9 @@
 
     <link rel="icon" type="image/icon" href="{{asset('images/favicon/favi.ico')}}">
     <!-- Bootstrap 3.3.7 -->
+
     <link rel="stylesheet" href="{{asset('backend/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('backend/bower_components/font-awesome/css/font-awesome.min.css')}}">
     <!-- Ionicons -->
@@ -23,7 +25,7 @@
     <link rel="stylesheet" href="{{asset('backend/bower_components/morris.js/morris.css')}}">
     <!-- jvectormap -->
     <link rel="stylesheet" href="{{asset('backend/bower_components/jvectormap/jquery-jvectormap.css')}}">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/css/jasny-bootstrap.min.css">
+
     <!-- Date Picker -->
     <link rel="stylesheet" href="{{asset('backend/css/bootstrap-datetimepicker.css')}}">
     <link rel="stylesheet" href="{{asset('backend/bower_components/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}">
@@ -47,7 +49,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>T</b>DC</span>
             <!-- logo for regular state and mobile devices -->
@@ -107,7 +109,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img src="{{Auth::user()->gravatar()}}" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>{{Auth::user()->name}}</p>
@@ -144,6 +146,21 @@
                     <ul class="treeview-menu">
                         <li><a href="{{route('sermons.index')}}"><i class="fa fa-circle-o"></i> All sermons</a></li>
                         <li><a href="{{route('sermons.create')}}"><i class="fa fa-circle-o"></i> Add new sermon</a></li>
+                    </ul>
+                </li>
+                @endif
+
+                @if(check_user_permissions(request(), "Causes@index"))
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-newspaper-o"></i>
+                        <span>Causes</span>
+                        <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('causes.index')}}"><i class="fa fa-circle-o"></i> All causes</a></li>
+                        <li><a href="{{route('causes.create')}}"><i class="fa fa-circle-o"></i> Add new causes</a></li>
                     </ul>
                 </li>
                 @endif
@@ -192,19 +209,33 @@
                         <li><a href="{{route('posts.create')}}"><i class="fa fa-circle-o"></i> Add new blog</a></li>
                     </ul>
                 </li>
+{{--                <li class="treeview">--}}
+{{--                    <a href="#">--}}
+{{--                        <i class="fa fa-upload"></i> <span>Gallery</span>--}}
+{{--                        <span class="pull-right-container">--}}
+{{--              <i class="fa fa-angle-left pull-right"></i>--}}
+{{--            </span>--}}
+{{--                    </a>--}}
+{{--                    <ul class="treeview-menu">--}}
+{{--                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> All photos</a></li>--}}
+{{--                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> All videos</a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+
+                @if(check_user_permissions(request(), "Testimony@index"))
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-upload"></i> <span>Gallery</span>
+                        <i class="fa fa-sticky-note-o"></i> <span>Testimonies</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> All photos</a></li>
-                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> All videos</a></li>
+                        <li><a href="{{route('testimonys.index')}}"><i class="fa fa-circle-o"></i> All testimonies</a></li>
+                        <li><a href="{{route('testimonys.create')}}"><i class="fa fa-circle-o"></i> Add testimonies</a></li>
                     </ul>
                 </li>
-
+                @endif
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-book"></i> <span>Bible Verse</span>
@@ -217,6 +248,21 @@
                         <li><a href="{{route('bible.create')}}"><i class="fa fa-circle-o"></i> Add Bible verse</a></li>
                     </ul>
                 </li>
+
+                @if(check_user_permissions(request(), "Streams@index"))
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-file-movie-o"></i> <span>Live Stream</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{route('live.index')}}"><i class="fa fa-circle-o"></i> All live stream</a></li>
+                        <li><a href="{{route('live.create')}}"><i class="fa fa-circle-o"></i> Add live stream</a></li>
+                    </ul>
+                </li>
+                @endif
 
                 @if(check_user_permissions(request(), "Users@index"))
                 <li class="treeview">
@@ -245,13 +291,13 @@
         <div class="pull-right hidden-xs">
 {{--            <b>Version</b> 2.4.18--}}
         </div>
-        <strong>Copyright &copy; {{\Carbon\Carbon::now()->year}} <a href="https://adminlte.io">Door Church</a>.</strong> All rights
+        <strong>Copyright &copy; {{\Carbon\Carbon::now()->year}} <a href="/">Door Church</a>. </strong> All rights
         reserved.
     </footer>
 
 </div>
 <!-- ./wrapper -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+
 <!-- jQuery 3 -->
 <script src="{{asset('backend/bower_components/jquery/dist/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -274,6 +320,8 @@
 <script src="{{asset('backend/bower_components/jquery-knob/dist/jquery.knob.min.js')}}"></script>
 <!-- daterangepicker -->
 <script src="{{asset('backend/js/bootstrap.bundle.js')}}"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
 <script src="{{asset('backend/bower_components/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('backend/js/bootstrap-datetimepicker.js')}}"></script>
 <script src="{{asset('backend/bower_components/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
@@ -291,7 +339,7 @@
 <script src="{{asset('backend/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('backend/js/pages/dashboard.js')}}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/4.0.0/js/jasny-bootstrap.min.js"></script>
+
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('backend/js/demo.js')}}"></script>
 </body>

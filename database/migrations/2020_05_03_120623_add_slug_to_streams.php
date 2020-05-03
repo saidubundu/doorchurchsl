@@ -15,6 +15,7 @@ class AddSlugToStreams extends Migration
     {
         Schema::table('streams', function (Blueprint $table) {
             //
+            $table->string('slug');
         });
     }
 
@@ -27,6 +28,7 @@ class AddSlugToStreams extends Migration
     {
         Schema::table('streams', function (Blueprint $table) {
             //
+            $table->dropColumn('slug');
         });
     }
 }

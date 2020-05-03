@@ -5,20 +5,20 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Bible
-                <small> Add new script</small>
+                LiveStream
+                <small> Create new live stream</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#"> Bible</a></li>
-                <li class="active">Add new script</li>
+                <li><a href="#"> LiveStream</a></li>
+                <li class="active">Create new live stream</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-            {!! Form::model($bible, ['method' => 'POST', 'route' => 'bible.store', 'files'=> TRUE, 'id'=>'post-form']) !!}
-            @include('backend.bibles.form')
+            {!! Form::model($stream, ['method' => 'POST', 'route' => 'live.store', 'files'=> TRUE, 'id'=>'post-form']) !!}
+            @include('backend.live.form')
             {!! Form::close() !!}
             <!-- /.row -->
         </section>

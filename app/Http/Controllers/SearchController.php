@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Pastor;
 use App\Post;
 use App\Sermon;
 use Illuminate\Http\Request;
@@ -29,6 +30,7 @@ class SearchController extends Controller
             ->registerModel(Post::class, 'title')
             ->registerModel(Sermon::class, 'title')
             ->registerModel(Event::class, 'title')
+            ->registerModel(Pastor::class, 'name')
             ->perform($searchTerm);
         return view('frontend.search', compact('searchTerm', 'searchResults'));
     }

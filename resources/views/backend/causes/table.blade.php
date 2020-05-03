@@ -2,18 +2,19 @@
     <table class="table table-hover">
         <tr>
             <th width="100">Action</th>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Email</th>
+            <th>Title</th>
+            <th>Raised</th>
+            <th>Goal</th>
+            <th>Orange No.</th>
+            <th>Africell No.</th>
+            <th>Account No.</th>
 
         </tr>
-        @foreach($pastors as $pastor)
+        @foreach($causes as $cause)
             <tr>
                 <td>
-                    {!! Form::open(['style' => 'display:inline-block','method' => 'DELETE', 'route' => ['pastors.destroy', $pastor->id]]) !!}
-                    <a title="Edit" class="btn btn-xs btn-default eit-row" href="{{route('pastors.edit',$pastor->slug)}}">
+                    {!! Form::open(['style' => 'display:inline-block','method' => 'DELETE', 'route' => ['causes.destroy', $cause->id]]) !!}
+                    <a title="Edit" class="btn btn-xs btn-default eit-row" href="{{route('causes.edit',$cause->id)}}">
                         <i class="fa fa-edit"></i>
                     </a>
 
@@ -23,16 +24,17 @@
 
 
                     {!! Form::close() !!}
-                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('pastor.show',$pastor->slug)}}">
+                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('cause.show',$cause->slug)}}">
                         <i class="fa fa-eye"></i>
                     </a>
                 </td>
 
-                <td>{{$pastor->name}}</td>
-                <td>{{$pastor->position}}</td>
-                <td>{{$pastor->address}}</td>
-                <td>{{$pastor->phone}}</td>
-                <td>{{$pastor->email}}</td>
+                <td>{{$cause->title}}</td>
+                <td>Le {{$cause->initial}}</td>
+                <td>Le {{$cause->goal}}</td>
+                <td>{{$cause->orange}}</td>
+                <td>{{$cause->africell}}</td>
+                <td>{{$cause->account}}</td>
 {{--                <td><abbr title="{{ $pastor->dateFormatted(true) }}">{{$pastor->dateFormatted()}}</abbr> | {!! $pastor->publicationLabel() !!}</td>--}}
 
             </tr>

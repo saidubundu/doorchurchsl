@@ -30,7 +30,8 @@ class PastorsRequest extends FormRequest
             'bio' => 'required',
             'address' => 'required',
             'phone' => 'required',
-            'email' => 'email|required'
+            'email' => 'email|required',
+            'branch' => 'required'
         ];
     }
 }

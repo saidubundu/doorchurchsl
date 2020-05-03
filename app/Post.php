@@ -7,13 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Searchable\Searchable;
 use Spatie\Searchable\SearchResult;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model implements Searchable
 {
     //
     use SoftDeletes;
+    use Sluggable;
+    use SluggableScopeHelpers;
 
-    protected $fillable = ['title','excerpt','body','published_at','image','view_count'];
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title',
+                 'onUpdate' => true,
+            ]
+        ];
+    }
+
+    protected $fillable = ['title','excerpt','body','published_at','image','view_count','slug'];
 
     protected $dates = ['published_at'];
 
@@ -25,6 +44,11 @@ class Post extends Model implements Searchable
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
     }
 
     public function getDateAttribute()
@@ -51,9 +75,9 @@ class Post extends Model implements Searchable
         return $this->created_at->format($format);
     }
 
-    public function scopeTime()
+    public function scopePopular($query)
     {
-        return $this->created_at;
+        return $query->orderBy('view_count', 'desc');
     }
 
     public function scopeLatestFirst($query)
@@ -100,4 +124,30 @@ class Post extends Model implements Searchable
             $url
         );
     }
+
+    /**
+     * @inheritDoc
+     */
+
+    public function scopeDate()
+    {
+        $time = $this->published_at;
+        $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->day;
+        return $year;
+    }
+
+    public function scopeMonth()
+    {
+        $time = $this->published_at;
+        $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->shortMonthName;
+        return $year;
+    }
+
+    public function scopeYear()
+    {
+        $time = $this->published_at;
+        $year = Carbon::createFromFormat('Y-m-d H:i:s', $time)->year;
+        return $year;
+    }
+
 }

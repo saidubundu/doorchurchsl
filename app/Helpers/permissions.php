@@ -33,7 +33,10 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
         'Pastors' => 'pastor',
         'Galleries' => 'gallery',
         'Bible' => 'bible',
-        'Users' => 'user'
+        'Users' => 'user',
+        'Streams' => 'liveStream',
+        'Causes' => 'cause',
+        'Testimony' => 'testimony',
     ];
 
     foreach ($crudPermissionsMap as $permission => $methods)

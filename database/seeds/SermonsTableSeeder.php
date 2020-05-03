@@ -21,7 +21,7 @@ class SermonsTableSeeder extends Seeder
         $faker = Factory::create();
         $date = Carbon::create(2020, 3,23, 9);
 
-        for($i = 1; $i <= 10; $i++){
+        for($i = 1; $i <= 20; $i++){
             $image = "sermon-grid-img" . rand(1,5) . ".jpg";
             $audio = "audio-" . rand(1,2) . ".mp3";
             $date->addDays(1);

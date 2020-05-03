@@ -111,6 +111,8 @@
       <path value="$PROJECT_DIR$/vendor/thomaswelton/gravatarlib" />
       <path value="$PROJECT_DIR$/vendor/thomaswelton/laravel-gravatar" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-searchable" />
+      <path value="$PROJECT_DIR$/vendor/balping/json-raw-encoder" />
+      <path value="$PROJECT_DIR$/vendor/consoletvs/charts" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7" />

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cause;
 use Illuminate\Http\Request;
 
 class CausesController extends Controller
@@ -11,9 +12,12 @@ class CausesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Cause $cause)
     {
         //
+        $causeGoal = $cause->goal;
+        $causes = Cause::paginate(6);
+        return view('frontend.causes.index', compact('causes', 'causeGoal'));
     }
 
     /**
@@ -40,12 +44,14 @@ class CausesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $slug
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
+        $cause = Cause::findBySlugOrFail($slug);
+        return view('frontend.causes.show',compact('cause'));
     }
 
     /**

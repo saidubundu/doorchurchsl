@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from webmarce.com/html/beloved-god/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Apr 2020 01:43:01 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>The Door Church Home Page</title>
+    <link rel="icon" type="image/icon" href="{{asset('images/favicon/favi.ico')}}">
 
     <!-- Css Files -->
-    <link rel="icon" type="image/ico" href="fav-icon.png">
+
     <link href="{{asset('frontend/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('player/player.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/css/font-awesome.css')}}" rel="stylesheet">
@@ -41,7 +41,7 @@
         <div class="church-main-header">
             <div class="container">
                 <div class="row">
-                    <aside class="col-md-3"> <a href="/" class="logo"><img src="images/logo2.png" alt=""></a> </aside>
+                    <aside class="col-md-3"> <a href="/" class="logo"><img src="{{asset('images/logo2.png')}}" alt=""></a> </aside>
                     <aside class="col-md-9">
                         <div class="church-navigation">
                             <!--// Navigation \\-->
@@ -49,21 +49,21 @@
                             <nav id="menu" class="menu navbar navbar-default">
                                 <ul class="level-1 navbar-nav">
                                     <li class="active"><a href="/">Home</a></li>
-                                    <li><a href="{{route('post.index')}}">Blog</a><span class="has-subnav"></span>
+                                    <li><a href="{{route('post.index')}}">News</a><span class="has-subnav"></span>
 
                                     </li>
-                                    <li><a href="#">Causes</a><span class="has-subnav"></span>
+                                    <li><a href="{{route('cause.index')}}">Causes</a><span class="has-subnav"></span>
 
                                     </li>
                                     <li><a href="{{route('event.index')}}">Events</a><span class="has-subnav"></span>
                                     </li>
-                                    <li><a href="{{route('sermon.index')}}">Sermon</a><span class="has-subnav"></span>
+                                    <li><a href="{{route('sermon.index')}}">Sermons</a><span class="has-subnav"></span>
 
                                     </li>
-                                    <li><a href="{{route('pastor.index')}}">Pastor</a><span class="has-subnav"></span>
+                                    <li><a href="{{route('pastor.index')}}">Pastors</a><span class="has-subnav"></span>
 
                                     </li>
-                                    <li><a href="{{route('gallery.index')}}"></a><span class="has-subnav"></span>
+                                    <li><a href="{{route('gallery.index')}}">Gallery</a><span class="has-subnav"></span>
                                     </li>
                                 </ul>
                             </nav>
@@ -73,7 +73,7 @@
                                 <li><a href="#" class="fa fa-search" data-toggle="modal" data-target="#searchmodal"></a></li>
 
                             </ul>
-                            <a href="404.html" class="church-btn">Give Online</a>
+                            <a href="{{route('online')}}" class="church-btn">Live</a>
                         </div>
                     </aside>
                 </div>
@@ -95,11 +95,11 @@
                     <aside class="col-md-3 widget widget_service_time">
                         <h2 class="church-footer-heading">[ Church Service Times ]</h2>
                         <ul>
-                            <li><time datetime="2008-02-14 20:00"><span>Saturday:</span> 5:00pm - 8:00pm</time></li>
-                            <li><time datetime="2008-02-14 20:00"><span>Sunday:</span> 8:30am - 6:00pm</time></li>
-                            <li><time datetime="2008-02-14 20:00"><span>Wednesday:</span> 7:30pm - 9:00pm</time></li>
-                            <li><time datetime="2008-02-14 20:00"><span>Thursday:</span> 7:00pm - 8:00pm</time></li>
-                            <li><time datetime="2008-02-14 20:00"><span>Friday:</span> 8:00pm - 7:00pm</time></li>
+{{--                            <li><time datetime="2008-02-14 20:00"><span>Saturday:</span> 5:00pm - 8:00pm</time></li>--}}
+                            <li><time datetime="2008-02-14 20:00"><span>Sunday:</span> 10:am</time></li>
+                            <li><time datetime="2008-02-14 20:00"><span>Tuesday:</span> 7:00pm</time></li>
+                            <li><time datetime="2008-02-14 20:00"><span>Wednesday:</span> 7:00pm</time></li>
+{{--                            <li><time datetime="2008-02-14 20:00"><span>Friday:</span> 8:00pm - 7:00pm</time></li>--}}
                         </ul>
                         <div class="widget_service_note">
                             <p><i class="icon church-exclamation"></i>Childcare Event available during every weekend and on Wednesday service.</p>
@@ -109,32 +109,7 @@
                     <!--// Widget service_time \\-->
 
                     <!--// Widget Latest Sermons \\-->
-                    <aside class="col-md-3 widget widget_latest_sermons">
-                        <h2 class="church-footer-heading">[ Latest Sermons ]</h2>
-                        <ul>
-                            <li>
-                                <figure><a href="sermon-detail.html"><img src="extra-images/widget-sermon-img1.jpg" alt=""></a></figure>
-                                <div class="widget-sermon-text">
-                                    <h6><a href="sermon-detail.html">Complete Pray Just To You</a></h6>
-                                    <span>Lorem ipsum dolor sit...</span>
-                                </div>
-                            </li>
-                            <li>
-                                <figure><a href="sermon-detail.html"><img src="extra-images/widget-sermon-img2.jpg" alt=""></a></figure>
-                                <div class="widget-sermon-text">
-                                    <h6><a href="sermon-detail.html">Jesus Prays For All Children</a></h6>
-                                    <span>Cresciam nunc brevis...</span>
-                                </div>
-                            </li>
-                            <li>
-                                <figure><a href="sermon-detail.html"><img src="extra-images/widget-sermon-img3.jpg" alt=""></a></figure>
-                                <div class="widget-sermon-text">
-                                    <h6><a href="sermon-detail.html">Give Water To Everyone</a></h6>
-                                    <span>Aeneat justo cresum et...</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </aside>
+                   @include('frontend.includes.footerSermon')
                     <!--// Widget Latest Sermons \\-->
 
                     <!--// Widget Get in Touch \\-->
@@ -176,7 +151,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="church-copyright">
-                        <p><span>Copyright {{\Carbon\Carbon::now()->yearIso}}.</span> All Rights Reserved <a href="/">The Door Church</a>.</p>
+                        <p><span>Copyright {{\Carbon\Carbon::now()->year}}.</span> All Rights Reserved <a href="/">The Door Church</a>.</p>
                     </div>
                 </div>
             </div>

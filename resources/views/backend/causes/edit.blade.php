@@ -5,20 +5,20 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Pastor
-                <small>Edit blog</small>
+                Cause
+                <small>Edit cause</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li><a href="#"> Pastor</a></li>
-                <li class="active">Edit pastor</li>
+                <li><a href="#"> Cause</a></li>
+                <li class="active">Edit cause</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-        {!! Form::model($pastor, ['method' => 'PUT', 'route' => ['pastors.update',$pastor->id], 'files'=> TRUE, 'id'=>'post-form']) !!}
-        @include('backend.pastors.form')
+        {!! Form::model($cause, ['method' => 'PUT', 'route' => ['causes.update',$cause->id], 'files'=> TRUE, 'id'=>'post-form']) !!}
+        @include('backend.causes.form')
         {!! Form::close() !!}
         <!-- /.row -->
         </section>

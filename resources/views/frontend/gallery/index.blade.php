@@ -2,70 +2,80 @@
 
 @section('content')
 
-    <header id="page-banner" class="banner-main-block">
-        <div class="banner-img" style="background-image: url('images/top-banner.jpg')">
-            <div class="overlay-bg"></div>
+    <div class="church-subheader">
+        <div class="church-subheader-text">
+            <span class="church-subheader-transparent"></span>
             <div class="container">
-                <div class="banner-block">
-                    <h3 class="section-heading">Gallery</h3>
-                    <ol class="breadcrumb">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a>Gallery</a></li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!--  end page banner  -->
-    <!-- gallery -->
-    <section id="portfolio" class="portfolio-main-block portfolio-two">
-        <div class="container-fluid">
-            <div class="section text-center">
-                <h3 class="section-heading">Our Portfolio</h3>
-                <h5 class="sub-heading">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at<br>  euismod ex, Maeceans sit amet sollicitudin ex.</h5>
-            </div>
-            <div class="portfolio-content">
-                <div class="portfolio-filter">
-                    <ul class="filter-dtl text-center">
-                        <li><a href="#all" class="filter-all btn btn-default active">All</a></li>
-                        <li><a href="#images" class="filter-images btn btn-default">Images</a></li>
-                        <li><a href="#videos" class="filter-videos btn btn-default">Videos</a></li>
-                    </ul>
-                </div>
                 <div class="row">
-                    <div class="portfolio-block portfolio-popup">
-                        <div class="col-md-6 col-sm-12 portfolio-item videos">
-                            @foreach($videos as $video)
-                            <div style="display: inline-block" class="video-item ">
-
-                                <video poster="/path/to/poster.jpg" id="player" playsinline controls>
-                                    <source src="{{$video->video_url}}" type="video/mp4" />
-                                    <!-- Captions are optional -->
-                                    <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default />
-                                </video>
-
-                            </div>
-                                @endforeach
-
-                        </div>
-                        @foreach($photos as $photo)
-                        <div class="col-md-3 col-sm-6 portfolio-item images">
-                            <div class="portfolio-img">
-                                <img src="{{$photo->photo_url}}" class="img-responsive" alt="portfolio-img-2">
-                                <div class="portfolio-overlay"><a href="{{$photo->photo_url}}"><i class="fa fa-search"></i></a></div>
-                            </div>
-                        </div>
-                            @endforeach
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 load-more text-center">
-                        <span class="load-more-btn"><a href="#" class="btn btn-default">View More</a></span>
+                    <div class="col-md-12">
+                        <h1>Our Gallery</h1>
+                        <div class="clearfix"></div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipi scing elit. Aliquam ac egestas velit</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        <div class="church-breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index-2.html">Homepage</a></li>
+                            <li class="active">Our Gallery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// SubHeader \\-->
+
+
+    <!--// Main Content \\-->
+    <div class="church-main-content">
+
+        <!--// Main Section \\-->
+        <div class="church-main-section">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="church-gallery-wrap">
+                            <div class="church-gallery church-modern-gallery">
+                                <ul class="row">
+                                    @foreach($photos as $photo)
+                                    <li class="col-md-4">
+                                        <figure><a data-fancybox-group="group" href="{{$photo->image_url}}" class="fancybox"><img src="{{$photo->image_url}}" alt=""></a>
+                                            <figcaption>
+                                                <ul class="church-gallery-option">
+                                                    <li><a data-fancybox-group="group" href="{{$photo->image_url}}" class="fancybox"><i class="icon church-search2"></i></a></li>
+                                                </ul>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="church-modern-gallery-text">
+                                            <h5><a>{{$photo->title}}</a></h5>
+                                            <time datetime="2008-02-14 20:00">{{$photo->created_at}}</time>
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <!--// Pagination \\-->
+                            <div class="church-pagination">
+
+                                    {{$photos->render()}}
+
+                            </div>
+                            <!--// Pagination \\-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--// Main Section \\-->
+
+    </div>
 
 @stop
 @section('script')

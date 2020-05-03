@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','bio'
     ];
 
     /**
@@ -42,7 +42,7 @@ class User extends Authenticatable
     public function gravatar()
     {
         $email = $this->email;
-        $default = asset("images/holder/profile.jpg");
+        $default = "https://www.pikpng.com/pngl/m/500-5008137_png-file-svg-user-profile-vector-clipart.png";
         $size = 40;
 
         return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;

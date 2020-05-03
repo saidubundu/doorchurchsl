@@ -1,6 +1,6 @@
 <div class="row">
     <!-- left column -->
-    <div class="col-md-9">
+    <div class="col-md-8">
         <!-- general form elements -->
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -42,11 +42,21 @@
                     <br>
 
                     <div class="from-group  {{ $errors->has('address') ? 'has-error' : '' }}">
-                        {!! Form::label('address') !!}
+                        {!! Form::label('address', 'Home Address') !!}
                         {!! Form::text('address', null, ['class'=>'form-control']) !!}
 
                         @if($errors->has('address'))
                             <span class="help-block">{{$errors->first('address')}}</span>
+                        @endif
+                    </div>
+                    <br>
+
+                    <div class="from-group  {{ $errors->has('branch') ? 'has-error' : '' }}">
+                        {!! Form::label('branch', 'Church Branch') !!}
+                        {!! Form::text('branch', null, ['class'=>'form-control']) !!}
+
+                        @if($errors->has('branch'))
+                            <span class="help-block">{{$errors->first('branch')}}</span>
                         @endif
                     </div>
                     <br>
@@ -81,7 +91,54 @@
 
     <!--/.col (left) -->
     <!-- right column -->
-    <div class="col-md-3">
+    <div class="col-md-4">
+
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Optional</h3>
+            </div>
+            <div class="box-boxy text-center">
+                <div class="from-group  {{ $errors->has('facebook') ? 'has-error' : '' }}">
+                    {!! Form::label('facebook') !!}
+                    {!! Form::text('facebook', null, ['class'=>'form-control']) !!}
+
+                    @if($errors->has('facebook'))
+                        <span class="help-block">{{$errors->first('facebook')}}</span>
+                    @endif
+                </div>
+                <br>
+
+                <div class="from-group  {{ $errors->has('twitter') ? 'has-error' : '' }}">
+                    {!! Form::label('twitter') !!}
+                    {!! Form::text('twitter', null, ['class'=>'form-control']) !!}
+
+                    @if($errors->has('twitter'))
+                        <span class="help-block">{{$errors->first('twitter')}}</span>
+                    @endif
+                </div>
+                <br>
+
+                <div class="from-group  {{ $errors->has('whatsapp') ? 'has-error' : '' }}">
+                    {!! Form::label('whatsapp') !!}
+                    {!! Form::text('whatsapp', null, ['class'=>'form-control']) !!}
+
+                    @if($errors->has('whatsapp'))
+                        <span class="help-block">{{$errors->first('whatsapp')}}</span>
+                    @endif
+                </div>
+                <br>
+
+                <div class="from-group  {{ $errors->has('instagram') ? 'has-error' : '' }}">
+                    {!! Form::label('instagram') !!}
+                    {!! Form::text('instagram', null, ['class'=>'form-control']) !!}
+
+                    @if($errors->has('instagram'))
+                        <span class="help-block">{{$errors->first('instagram')}}</span>
+                    @endif
+                </div>
+                <br>
+            </div>
+        </div>
 
         <div class="box box-info">
             <div class="box-header with-border">

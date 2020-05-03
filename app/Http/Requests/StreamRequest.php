@@ -13,7 +13,7 @@ class StreamRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class StreamRequest extends FormRequest
     {
         return [
             //
+            'title' => 'required|max:225',
+            'link' => 'required'
         ];
     }
 }

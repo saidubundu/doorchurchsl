@@ -25,7 +25,7 @@ class EventsController extends BackendController
     public function index()
     {
         //
-        $events = Event::paginate(5);
+        $events = Event::simplePaginate(5);
         return view('backend.events.index', compact('events'));
     }
 
