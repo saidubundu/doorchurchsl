@@ -1,7 +1,11 @@
 <?php
     return [
         'images' => [
-            'directory' => 'images/sermons',
+            'sermons' => 'images/sermons',
+            'blog' => 'images/blog',
+            'causes' => 'images/causes',
+            'event' => 'images/event',
+            'pastor' => 'images/pastor',
         ],
 
         'audio' => [

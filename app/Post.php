@@ -61,8 +61,9 @@ class Post extends Model implements Searchable
         $imageUrl = "";
 
         if (! is_null($this->image)){
-            $imagePath = public_path() . "/images/blog/" . $this->image;
-            if (file_exists($imagePath)) $imageUrl = asset("images/blog/" . $this->image);
+            $directory = config('cms.images.blog');
+            $imagePath = public_path() . "/{$directory}/" . $this->image;
+            if (file_exists($imagePath)) $imageUrl = asset("{$directory}/" . $this->image);
         }
 
         return $imageUrl;

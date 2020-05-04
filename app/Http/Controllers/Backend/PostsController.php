@@ -14,7 +14,7 @@ class PostsController extends BackendController
     public function __construct()
     {
         parent::__construct();
-        $this->uploadPath = public_path('images/blog');
+        $this->uploadPath = public_path(config('cms.images.blog'));
     }
 
     /**

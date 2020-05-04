@@ -14,7 +14,7 @@ class SermonsController extends BackendController
     public function __construct()
     {
         parent::__construct();
-        $this->imageUploadPath = public_path(config('cms.images.directory'));
+        $this->imageUploadPath = public_path(config('cms.images.sermons'));
         $this->audioUploadPath = public_path(config('cms.audio.directory'));
     }
     /**
