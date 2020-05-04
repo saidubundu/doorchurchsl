@@ -37,19 +37,6 @@
         <div class="church-main-section">
             <div class="container">
                 <div class="row">
-                    @if($streams->isEmpty())
-                        <div class="church-search-result-text">
-                            <img src="{{asset('images/search-title.png')}}" alt="">
-                            <h2>We're sorry, This page is empty</h2>
-                            <p>Can't find what you need? Take a moment and do a search below or start from our homepage.</p>
-                            <form action="{{route('search.result')}}">
-                                <input type="text" name="query" value="{{isset($searchTerm) ? $searchTerm : ''}}" onblur="if(this.value == '') { this.value ='Type Here'; }" onfocus="if(this.value =='Type Here') { this.value = ''; }" tabindex="0" type="text">
-                                <input type="submit" value="Search">
-                            </form>
-                            <div class="clearfix"></div>
-                            <a href="/" class="church-blog-readmore church-bgcolor">Back To Homepage</a>
-                        </div>
-                    @else
                     <div class="churuch-team-wrap">
                         <div class="container">
                             <div class="row">
@@ -103,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                        @endif
+
                 </div>
             </div>
         </div>
