@@ -1,6 +1,5 @@
 <?php
 
-use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,9 +13,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //
-        
-        DB::table('users')->truncate();
-        $faker = Factory::create();
+
+        DB::table('users')->delete();
+        $faker = \Faker\Factory::create();
         DB::table('users')->insert([
             [
                 'name' => 'Door Church',

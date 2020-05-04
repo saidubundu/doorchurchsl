@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 //        $this->call(CommentsTableSeeder::class);
         $this->call(PermissionsTableSeeder::class);
 //        $this->call(CausesTableSeeder::class);
-        $this->call(TestimoniesTableSeeder::class);
+//        $this->call(TestimoniesTableSeeder::class);
 
     }
 }

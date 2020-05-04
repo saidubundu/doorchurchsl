@@ -1,6 +1,6 @@
 <?php
 
-use Faker\Factory;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -14,8 +14,8 @@ class BibleTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('bibles')->truncate();
-        $faker = Factory::create();
+        DB::table('bibles')->delete();
+        $faker = \Faker\Factory::create();
 
         DB::table('bibles')->insert([
             [

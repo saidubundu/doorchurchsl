@@ -15,7 +15,7 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('permissions')->truncate();
+        DB::table('permissions')->delete();
         //crud user
         $crudUser = new Permission();
         $crudUser->name = "crud-user";
