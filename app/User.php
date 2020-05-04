@@ -62,4 +62,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Event');
     }
+
+    public function setPasswordAttribute($value)
+    {
+        if (! empty($value)) $this->attributes['password'] = crypt($value, '');
+    }
 }

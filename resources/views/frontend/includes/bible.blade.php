@@ -14,7 +14,7 @@
                     <div class="col-md-8">
 
                         <div class="church-banner-text">
-                            <h1>{{$bible->script}}</h1>
+                            <h1>{!! $bible->script !!}</h1>
                             <span><i class="icon church-right-arrow"></i>{{$bible->verse}}</span>
                         </div>
 
