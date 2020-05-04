@@ -15,27 +15,26 @@ class UsersTableSeeder extends Seeder
         //
 
         DB::table('users')->delete();
-        $faker = \Faker\Factory::create();
         DB::table('users')->insert([
             [
                 'name' => 'Door Church',
                 'email' => 'door@peektower.com',
                 'password' => bcrypt('password'),
-                'bio' => $faker->sentence(rand(10,15))
+                'bio' => 'This is the bio'
             ],
 
             [
                 'name' => 'John Doe',
                 'email' => 'doe@peektower.com',
                 'password' => bcrypt('password'),
-                'bio' => $faker->sentence(rand(10,15))
+                'bio' => 'This is the bio'
             ],
 
             [
                 'name' => 'Jane Doe',
                 'email' => 'jane@peektower.com',
                 'password' => bcrypt('password'),
-                'bio' => $faker->sentence(rand(10,15))
+                'bio' => 'This is the bio'
             ],
         ]);
     }
