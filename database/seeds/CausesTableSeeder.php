@@ -14,7 +14,7 @@ class CausesTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        
         DB::table('causes')->truncate();
         $causes = [];
         $faker = Factory::create();
