@@ -21,7 +21,7 @@
 
 
                     {!! Form::close() !!}
-                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('sermon.show',$sermon->id)}}">
+                    <a type="submit" title="View" class="btn btn-xs btn-success view-row" href="{{route('sermon.show',$sermon->slug)}}">
                         <i class="fa fa-eye"></i>
                     </a>
                 </td>
