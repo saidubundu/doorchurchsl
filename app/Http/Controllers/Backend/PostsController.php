@@ -91,6 +91,7 @@ class PostsController extends BackendController
     private function handleRequest($request)
     {
         $data = $request->all();
+        $request->get('published_at')->toDateTimeString();
 
         if ($request->hasFile('image'))
         {
