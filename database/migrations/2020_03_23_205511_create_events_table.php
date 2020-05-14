@@ -20,7 +20,7 @@ class CreateEventsTable extends Migration
             $table->string('eventImage');
             $table->string('date');
             $table->string('location');
-            $table->integer('view_count');
+            $table->integer('view_count')->default(0);
             $table->timestamps();
         });
     }
