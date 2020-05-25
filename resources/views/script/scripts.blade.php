@@ -8,7 +8,7 @@
 
         $(function () {
             $('#published_at').datetimepicker({
-                format: 'YY-MM-DD HH:mm:ss',
+                format: 'Y-MM-DD HH:mm:ss',
                 showClear: true
             });
         });
